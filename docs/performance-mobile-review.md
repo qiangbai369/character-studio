@@ -10,6 +10,7 @@
 - 优先准备当前角色与当前穿搭的动作，完成后才准备同季另一套的原始站姿；其他穿搭的动作按需载入。角色/季节变化取消旧的待执行准备任务；隐藏页面和省流量连接不额外准备另一套站姿。
 - 保留6套解码原图、4套动作的缓存上限，同时保护当前可见人物。旧缓存释放后可以重新读取；仍保留请求合并、失败重试和最后一次选择优先。
 - 动作素材等待时，相应按钮显示淡色虚线；成功或失败后恢复。换装加载期间继续显示上一套可见人物。
+- 旧版衣柜脚本缓存仍可完成启动；缩略图失败时仅回退一次原PNG，不让图片失败变成页面无法打开。
 
 新素材是现有文件的派生交付格式，没有重新生成角色、五官、服装和鞋子。原始PNG保留供回退和编辑使用。
 
@@ -35,6 +36,8 @@
 
 原始记录位于被Git忽略的本地 `output/performance/`：`before-normal.json`、`after-normal.json`、`before-slow.json`、`after-slow.json`、`before-warm.json`、`after-warm.json` 及两个 `*-slow-switch.json`。每项含浏览器版本、资源路径、时长、传输量与缓存记录。零传输记录可能来自缓存或请求合并。
 
+上述对照完成后增加了旧脚本兼容和缩略图失败回退。这两项没有改变对照中的派生图像和准备顺序，只增加少量脚本文本；表格保留测量阶段的实际字节数，没有把毫秒级单次数据当作上线后的时间保证。
+
 优先级是浏览器提示，并非带宽保障；参考 [MDN fetchPriority](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/fetchPriority)。空闲准备保留不支持requestIdleCallback的定时器退路；参考 [MDN requestIdleCallback](https://developer.mozilla.org/en-US/docs/Web/API/Window/requestIdleCallback)。
 
 ## 手机排布预览
@@ -53,7 +56,7 @@
 
 ## 回归与保存
 
-本轮全量 `node --test tests/*.test.cjs`：104通过、0失败、0跳过。图像检查依赖 `@napi-rs/canvas` 和 `sharp`。报告：本地 `output/performance/tests.txt`。
+本轮全量 `node --test tests/*.test.cjs`：106通过、0失败、0跳过。图像检查依赖 `@napi-rs/canvas` 和 `sharp`。报告：本地 `output/performance/tests.txt`。
 
 检查内容包含24套服装及相应动作、透明注册边缘、保留原鞋和衣服下摆、逐像素无损图、原PNG哈希、缓存释放与重载、过期请求、加载失败、保存照片及旧作品继续编辑。电脑端布局和原摄影棚玩法保留；正式CSS仅增加动作等待按钮的样式，手机布局仍在独立预览文件中。
 

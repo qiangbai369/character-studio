@@ -23,7 +23,7 @@ async function page(records=[photo()],session=null,network={}){
   }
   const document={body,hidden:false,getElementById:get,createElement:t=>new Element(t),createElementNS:(_,t)=>new Element(t),querySelectorAll:s=>body.querySelectorAll(s),addEventListener(){}};
   const effects={loadCharacter:async()=>{},loadLook:async id=>{actionRequests.push(id);if(failed)throw new Error('asset unavailable');if(assetGate){const gate=assetGate;assetGate=null;await gate;}},palette:()=>['#cbbba5','#d2c5b3','#e4dfd5']};
-  const window={NieveModel:M,SweetWardrobe:W,StudioModel:SM,StudioEffects:effects,NieveStorage:{listVersions:async()=>records,saveVersion:async r=>records.push(r)},NieveRenderer:{prepare(im,o){im.frame=o.frame;},draw(c,im,settings,options){lastDraw={im,settings,options};return {x:0,y:0,width:400,height:600,baseline:600};}},devicePixelRatio:1,matchMedia:()=>({matches:true}),requestIdleCallback(f){idleJobs.push(f);return idleJobs.length;},cancelIdleCallback(id){idleJobs[id-1]=null;},addEventListener(){}};
+  const window={NieveModel:M,SweetWardrobe:network.wardrobe||W,StudioModel:SM,StudioEffects:effects,NieveStorage:{listVersions:async()=>records,saveVersion:async r=>records.push(r)},NieveRenderer:{prepare(im,o){im.frame=o.frame;},draw(c,im,settings,options){lastDraw={im,settings,options};return {x:0,y:0,width:400,height:600,baseline:600};}},devicePixelRatio:1,matchMedia:()=>({matches:true}),requestIdleCallback(f){idleJobs.push(f);return idleJobs.length;},cancelIdleCallback(id){idleJobs[id-1]=null;},addEventListener(){}};
   const savedSession={value:session};
   const context={window,document,StudioEffects:effects,StudioModel:SM,localStorage:{getItem:()=>savedSession.value?JSON.stringify(savedSession.value):null,setItem(k,v){savedSession.value=JSON.parse(v);}},navigator:{connection:network.connection},performance:{now:()=>0},matchMedia:window.matchMedia,requestAnimationFrame:f=>{frames.push(f);return frames.length;},ResizeObserver:class{observe(){}},setTimeout:()=>1,clearTimeout(){},crypto:{randomUUID:()=> 'new-id'},console,Intl,URL:{createObjectURL:b=>{const id='blob:'+(++serial);urls.set(id,b);return id;},revokeObjectURL:id=>revoked.push(id)},Image:class {naturalWidth=1024;naturalHeight=1536;set src(id){this.blob=urls.get(id);queueMicrotask(()=>this.onload());}},fetch:async url=>{requests.push(url);return network.fetch?network.fetch(url):{ok:true,blob:async()=>new Blob(['current-source'])};}};
   vm.runInNewContext(fs.readFileSync(require.resolve('../js/studio-controller.js'),'utf8'),context);
@@ -153,4 +153,15 @@ test('a pending gesture shows loading only on its button and clears after succes
  assert.equal(puff.getAttribute('aria-busy'),'true');assert.equal(heart.getAttribute('aria-busy'),'false');
  release();await request;assert.equal(puff.getAttribute('aria-busy'),'false');
  p.failAssets();await heart.click();assert.equal(heart.getAttribute('aria-busy'),'false');assert.equal(p.get('toast').hidden,false);
+});
+
+test('an older cached wardrobe module cannot strand the studio at preparation',async()=>{
+ const old={...W};delete old.thumbnailFor;const p=await page([],null,{wardrobe:old});
+ assert.equal(p.get('loading').hidden,true);assert.equal(p.get('photoButton').disabled,false);
+ assert.ok(p.get('characterPicker').children.length===3);
+});
+test('a missing card thumbnail falls back once to its unchanged original without stopping the studio',async()=>{
+ const p=await page(),im=p.get('characterPicker').children[0].querySelectorAll('*').find(n=>n.tagName==='img');
+ assert.equal(typeof im.onerror,'function');im.onerror();assert.equal(im.src,W.find('autumn').file);assert.equal(im.onerror,null);
+ assert.equal(p.get('loading').hidden,true);
 });

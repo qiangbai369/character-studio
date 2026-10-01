@@ -50,7 +50,8 @@
     const button = document.createElement('button');
     button.type = 'button'; button.className = 'character-choice'; button.dataset.character = character.id;
     button.setAttribute('aria-label', '切换角色：' + character.label); button.setAttribute('aria-pressed', 'false'); button.disabled = true;
-    const thumbnail = document.createElement('img'); thumbnail.src = W.thumbnailFor(character.base); thumbnail.decoding = 'async'; thumbnail.fetchPriority = 'low'; thumbnail.width = 192; thumbnail.height = 288; thumbnail.alt = '';
+    const thumbnail = document.createElement('img'); thumbnail.src = W.thumbnailFor?.(character.base) || 'assets/thumbnails/' + character.base + '.webp'; thumbnail.decoding = 'async'; thumbnail.fetchPriority = 'low'; thumbnail.width = 192; thumbnail.height = 288; thumbnail.alt = '';
+    thumbnail.onerror = () => { thumbnail.onerror = null; thumbnail.src = character.file; };
     const label = document.createElement('span'); label.textContent = character.label;
     button.append(framedThumbnail(thumbnail, character.base, 'character-thumbnail'), label);
     button.addEventListener('click', () => changeOutfit(selectedLook(character.id).id));
@@ -86,7 +87,8 @@
     button.type = 'button'; button.className = 'outfit-card'; button.dataset.outfit = look.id;
     button.setAttribute('aria-label', '换装：' + look.label); button.setAttribute('aria-pressed', 'false');
     button.disabled = true;
-    const thumbnail = document.createElement('img'); thumbnail.src = W.thumbnailFor(look.id); thumbnail.decoding = 'async'; thumbnail.fetchPriority = 'low'; thumbnail.alt = ''; thumbnail.width = 44; thumbnail.height = 54;
+    const thumbnail = document.createElement('img'); thumbnail.src = W.thumbnailFor?.(look.id) || 'assets/thumbnails/' + look.id + '.webp'; thumbnail.decoding = 'async'; thumbnail.fetchPriority = 'low'; thumbnail.alt = ''; thumbnail.width = 44; thumbnail.height = 54;
+    thumbnail.onerror = () => { thumbnail.onerror = null; thumbnail.src = look.file; };
     const label = document.createElement('span'); label.textContent = look.label;
     button.append(framedThumbnail(thumbnail, look.id, 'outfit-thumbnail'), label); button.addEventListener('click', () => changeOutfit(look.id));
     $('outfitList').append(button);
