@@ -5,6 +5,9 @@
 - 在线体验：https://qiangbai369.github.io/character-studio/
 - 当前版本：四季衣柜 v8
 - 三位角色和衣服使用与确认的本地版本一致的PNG素材。
+- 独立项目说明：[PROJECT.md](PROJECT.md)
+- 待确认的优化细则：[docs/optimization-roadmap.md](docs/optimization-roadmap.md)
+- 已确认上线基线：Git标签 `v8.0.0`；本规划分支只保存项目与方案记录。
 
 ## 本地运行
 
