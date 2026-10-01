@@ -11,6 +11,7 @@
       document.body.append(panel);
     }
     const resources = performance.getEntriesByType('resource').filter(r => !r.name.startsWith('blob:'));
+    report.viewport = {width: window.innerWidth, height: window.innerHeight, contentWidth: document.documentElement.clientWidth};
     report.transferBytes = resources.reduce((sum, r) => sum + r.transferSize, 0);
     report.decodedBodyBytes = resources.reduce((sum, r) => sum + r.decodedBodySize, 0);
     report.cachedResources = resources.filter(r => r.transferSize === 0 && r.decodedBodySize > 0).length;
