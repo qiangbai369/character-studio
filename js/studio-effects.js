@@ -1,6 +1,8 @@
 (function(root){
   'use strict';
   const M=root.StudioModel,sprites=new Map(),textures=new WeakMap(),lookLoads=new Map(),imageLoads=new Map();
+  let pinnedLook;
+  const lookUsage=new Map();
   const files={
     'sweet-blink':'assets/motion/sweet-autumn-v1/blink.png','sweet-smile':'assets/motion/sweet-autumn-v1/smile.png',
     'sweet-puff':'assets/motion/sweet-autumn-v1/puff.png','sweet-wave':'assets/motion/sweet-autumn-v1/wave.png',
@@ -32,7 +34,7 @@
     const job=new Promise((resolve,reject)=>{
     const img=new Image();let retried=false;img.decoding='async';
     img.onload=()=>{sprites.set(id,img);resolve(id);};
-    img.onerror=()=>{if(!retried){retried=true;img.src=path+'?retry=1';}else reject(new Error('动作素材未载入：'+id));};img.src=path;
+    img.onerror=()=>{if(!retried){retried=true;img.src=path;}else reject(new Error('动作素材未载入：'+id));};img.src=path.replace(/\.png$/,'.webp');
     });imageLoads.set(id,job);job.catch(()=>imageLoads.delete(id));return job;
   }
   function loadCharacter(character){
@@ -44,6 +46,15 @@
     async function worker(){while(index<entries.length){const [id,path]=entries[index++];try{await loadImage(id,path);results.push({status:'fulfilled',value:id});}catch(reason){results.push({status:'rejected',reason});}}}
     await Promise.all([worker(),worker()]);return results;
   }
+  function trimLookCache(){
+    for(const [look] of lookUsage){
+      if(lookUsage.size<=4)break;
+      if(look===pinnedLook)continue;
+      lookUsage.delete(look);lookLoads.delete(look);
+      for(const key of [...sprites.keys()])if(key.startsWith(look+':')){sprites.delete(key);imageLoads.delete(key);}
+    }
+  }
+  function pinLook(look){pinnedLook=look;trimLookCache();}
   function loadLook(look){
     const sweet=Boolean(sweetRegistration[look]);
     const actions=sweet?['puff','heart']:look?.startsWith('cool-')?['hat','arms','peace']:look?.startsWith('literary-')?['glasses','wave','think']:[];
@@ -53,7 +64,9 @@
       const job=Promise.all(actions.map(id=>loadImage(look+':'+id,'assets/motion/'+folder+'/'+look+'-'+id+'.png')));
       lookLoads.set(look,job);job.catch(()=>lookLoads.delete(look));
     }
-    return lookLoads.get(look);
+    const job=lookLoads.get(look);
+    job.then(()=>{lookUsage.delete(look);lookUsage.set(look,true);trimLookCache();},()=>{});
+    return job;
   }
   function fullPose(data,pose,look){
     const sprite=sprites.get(look+':'+pose.id);if(!sprite)return null;
@@ -377,5 +390,5 @@
     }
     ctx.restore();
   }
-  root.StudioEffects={load,loadCharacter,loadLook,texture,light,palette,room,shadow,decoration,anchors};
+  root.StudioEffects={load,loadCharacter,loadLook,pinLook,texture,light,palette,room,shadow,decoration,anchors};
 })(window);

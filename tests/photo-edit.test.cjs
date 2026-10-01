@@ -13,8 +13,8 @@ class Element {
   getContext(){return {drawImage(){}};} toDataURL(){return 'data:image/png;base64,fixture';} toBlob(f){f(new Blob(['new photograph']));}
 }
 const photo=()=>({id:'saved-photo',kind:'photo',name:'阿飒',characterId:'cool',outfitId:'cool-street',createdAt:1,thumbnail:'thumb',imageBlob:new Blob(['saved-source']),photoBlob:new Blob(['saved-photograph']),frame:{x:.2,y:.05,width:.6,height:.9},responseVersion:2,settings:{...M.DEFAULTS,headSize:.12,lightColor:'#c6d9ed',lightIntensity:.42},studio:{state:{...SM.DEFAULTS,scene:'magazine',ratio:'square',crop:'half',scale:.88,offsetX:.06,offsetY:-.04,caption:'周末',showDate:true,lightX:.82,lightY:.3},pose:{id:'peace',amount:.43,active:true,idle:false,time:2,blink:0,progress:.25}}});
-async function page(records=[photo()],session=null){
-  const nodes=new Map(),body=new Element('body'),frames=[],urls=new Map(),revoked=[];let serial=0,lastDraw,failed=false,assetGate=null;
+async function page(records=[photo()],session=null,network={}){
+  const requests=[],idleJobs=[],actionRequests=[];const nodes=new Map(),body=new Element('body'),frames=[],urls=new Map(),revoked=[];let serial=0,lastDraw,failed=false,assetGate=null;
   const get=id=>{if(!nodes.has(id)){const e=new Element();e.id=id;nodes.set(id,e);body.append(e);}return nodes.get(id);};
   const html=fs.readFileSync(require.resolve('../index.html'),'utf8');
   for(const match of html.matchAll(/<([a-z]+)\b([^>]*)>/g)){
@@ -22,15 +22,15 @@ async function page(records=[photo()],session=null){
     const e=id?get(id[1]):new Element(match[1]);e.tagName=match[1];e.hidden=/\bhidden\b/.test(match[2]);if(!id)body.append(e);for(const d of ds)e.dataset[d[1]]=d[2];
   }
   const document={body,hidden:false,getElementById:get,createElement:t=>new Element(t),createElementNS:(_,t)=>new Element(t),querySelectorAll:s=>body.querySelectorAll(s),addEventListener(){}};
-  const effects={loadCharacter:async()=>{},loadLook:async()=>{if(failed)throw new Error('asset unavailable');if(assetGate){const gate=assetGate;assetGate=null;await gate;}},palette:()=>['#cbbba5','#d2c5b3','#e4dfd5']};
-  const window={NieveModel:M,SweetWardrobe:W,StudioModel:SM,StudioEffects:effects,NieveStorage:{listVersions:async()=>records,saveVersion:async r=>records.push(r)},NieveRenderer:{prepare(im,o){im.frame=o.frame;},draw(c,im,settings,options){lastDraw={im,settings,options};return {x:0,y:0,width:400,height:600,baseline:600};}},devicePixelRatio:1,matchMedia:()=>({matches:true}),requestIdleCallback(){},addEventListener(){}};
+  const effects={loadCharacter:async()=>{},loadLook:async id=>{actionRequests.push(id);if(failed)throw new Error('asset unavailable');if(assetGate){const gate=assetGate;assetGate=null;await gate;}},palette:()=>['#cbbba5','#d2c5b3','#e4dfd5']};
+  const window={NieveModel:M,SweetWardrobe:W,StudioModel:SM,StudioEffects:effects,NieveStorage:{listVersions:async()=>records,saveVersion:async r=>records.push(r)},NieveRenderer:{prepare(im,o){im.frame=o.frame;},draw(c,im,settings,options){lastDraw={im,settings,options};return {x:0,y:0,width:400,height:600,baseline:600};}},devicePixelRatio:1,matchMedia:()=>({matches:true}),requestIdleCallback(f){idleJobs.push(f);return idleJobs.length;},cancelIdleCallback(id){idleJobs[id-1]=null;},addEventListener(){}};
   const savedSession={value:session};
-  const context={window,document,StudioEffects:effects,StudioModel:SM,localStorage:{getItem:()=>savedSession.value?JSON.stringify(savedSession.value):null,setItem(k,v){savedSession.value=JSON.parse(v);}},performance:{now:()=>0},matchMedia:window.matchMedia,requestAnimationFrame:f=>{frames.push(f);return frames.length;},ResizeObserver:class{observe(){}},setTimeout:()=>1,clearTimeout(){},crypto:{randomUUID:()=> 'new-id'},console,Intl,URL:{createObjectURL:b=>{const id='blob:'+(++serial);urls.set(id,b);return id;},revokeObjectURL:id=>revoked.push(id)},Image:class {naturalWidth=1024;naturalHeight=1536;set src(id){this.blob=urls.get(id);queueMicrotask(()=>this.onload());}},fetch:async()=>({ok:true,blob:async()=>new Blob(['current-source'])})};
+  const context={window,document,StudioEffects:effects,StudioModel:SM,localStorage:{getItem:()=>savedSession.value?JSON.stringify(savedSession.value):null,setItem(k,v){savedSession.value=JSON.parse(v);}},navigator:{connection:network.connection},performance:{now:()=>0},matchMedia:window.matchMedia,requestAnimationFrame:f=>{frames.push(f);return frames.length;},ResizeObserver:class{observe(){}},setTimeout:()=>1,clearTimeout(){},crypto:{randomUUID:()=> 'new-id'},console,Intl,URL:{createObjectURL:b=>{const id='blob:'+(++serial);urls.set(id,b);return id;},revokeObjectURL:id=>revoked.push(id)},Image:class {naturalWidth=1024;naturalHeight=1536;set src(id){this.blob=urls.get(id);queueMicrotask(()=>this.onload());}},fetch:async url=>{requests.push(url);return network.fetch?network.fetch(url):{ok:true,blob:async()=>new Blob(['current-source'])};}};
   vm.runInNewContext(fs.readFileSync(require.resolve('../js/studio-controller.js'),'utf8'),context);
   vm.runInNewContext(fs.readFileSync(require.resolve('../js/app.js'),'utf8'),context);
   const settle=async()=>{for(let i=0;i<20;i++)await Promise.resolve();};await settle();
   const paint=(now=0)=>{const pending=frames.splice(0);for(const f of pending)f(now);return lastDraw;};paint();
-  return {get,paint,settle,records,revoked,savedSession,failAssets:(value=true)=>failed=value,gateAssets(){let resolve;assetGate=new Promise(r=>resolve=r);return resolve;},async view(){await get('libraryButton').click();await get('libraryList').children[0].children[0].click();await settle();},async chooseCool(){await get('characterPicker').children[1].click();await settle();paint();}};
+  return {get,paint,settle,records,revoked,savedSession,requests,actionRequests,async warm(){const jobs=idleJobs.splice(0);for(const job of jobs)if(job)await job();await settle();},failAssets:(value=true)=>failed=value,gateAssets(){let resolve;assetGate=new Promise(r=>resolve=r);return resolve;},async view(){await get('libraryButton').click();await get('libraryList').children[0].children[0].click();await settle();},async chooseCool(){await get('characterPicker').children[1].click();await settle();paint();}};
 }
 test('viewing a saved photograph keeps the current studio untouched until continue-edit is chosen',async()=>{
   const p=await page();await p.view();const draw=p.paint();assert.equal(p.get('photoDialog').open,true);assert.equal(p.get('characterName').textContent,'甜橙','viewing a photo unexpectedly replaced the studio character');assert.equal(draw.options.studio.state.scene,'studio');
@@ -106,4 +106,51 @@ test('a second seasonal look restores its own season after refresh and in a save
   assert.equal(restored.paint().options.studio.outfitId,'literary-winter-2');assert.equal(restored.paint().options.studio.pose.id,'think');
   assert.equal(restored.get('seasonPicker').querySelector('[data-season="winter"]').getAttribute('aria-pressed'),'true');
   assert.equal(await restored.paint().im.blob.text(),'saved-source');
+});
+
+// Performance behavior: tiny UI imagery must not compete with the displayed PNG.
+test('character and outfit cards use dedicated small images while the source remains original',async()=>{
+ const p=await page();
+ for(const holder of [p.get('characterPicker'),p.get('outfitList')])for(const im of holder.querySelectorAll('*').filter(n=>n.tagName==='img'))
+   assert.ok(im.src.startsWith('assets/thumbnails/'),im.src+' still downloads a full portrait for a small card');
+ assert.deepEqual(p.requests,[W.find('autumn').file]);assert.equal(await p.paint().im.blob.text(),'current-source');
+});
+test('base image cache releases older outfits and retries them without discarding the visible source',async()=>{
+ const p=await page();
+ for(const season of ['spring','summer','winter']){await chooseSeason(p,season);await p.get('outfitList').children[1].click();await p.settle();}
+ await p.chooseCool();await p.get('characterPicker').children[2].click();await p.settle();
+ assert.ok(p.revoked.length>0,'all decoded original PNGs are retained indefinitely');
+ await p.get('characterPicker').children[0].click();await chooseSeason(p,'autumn');
+ assert.equal(p.requests.filter(x=>x===W.find('autumn').file).length,2,'evicted original failed to reload');
+ assert.equal(await p.paint().im.blob.text(),'current-source');
+});
+test('a failed or late outfit request keeps the visible character and the last choice wins',async()=>{
+ let unblock;const delayed=new Promise(r=>unblock=r);let fail=true;
+ const p=await page([],null,{fetch:async url=>{if(url===W.find('cool-original').file)await delayed;if(url===W.find('literary-bookshop').file&&fail)return{ok:false};return{ok:true,blob:async()=>new Blob([url])};}});
+ const cool=p.get('characterPicker').children[1].click();await p.settle();
+ assert.equal(p.get('characterName').textContent,'甜橙');
+ await p.get('characterPicker').children[2].click();assert.equal(p.get('characterName').textContent,'甜橙');
+ fail=false;await p.get('characterPicker').children[2].click();unblock();await cool;await p.settle();
+ assert.equal(p.get('characterName').textContent,'知秋');assert.equal(p.paint().options.studio.outfitId,'literary-bookshop');
+});
+test('background preparation waits for current gestures and never loads another outfits gestures',async()=>{
+ const p=await page();await chooseSeason(p,'summer');
+ const release=p.gateAssets(),warming=p.warm();await p.settle();
+ assert.ok(!p.requests.includes(W.find('sweet-summer-2').file),'another large PNG competed with pending current gestures');
+ release();await warming;
+ assert.ok(p.requests.includes(W.find('sweet-summer-2').file),'same-season original was not warmed');
+ assert.ok(!p.requests.includes(W.find('sweet-winter').file),'background preparation leaked into other seasons');
+ assert.ok(!p.actionRequests.includes('sweet-summer-2'),'unused gestures downloaded in the background');
+});
+
+test('data saving connections keep unused originals and gestures on demand',async()=>{
+ const p=await page([],null,{connection:{saveData:true}});await p.warm();
+ assert.deepEqual(p.requests,[W.find('autumn').file]);assert.ok(!p.actionRequests.includes('sweet-autumn-2'));
+});
+test('a pending gesture shows loading only on its button and clears after success or failure',async()=>{
+ const p=await page(),puff=p.get('responseButtons').children[1],heart=p.get('responseButtons').children[2];
+ const release=p.gateAssets(),request=puff.click();await p.settle();
+ assert.equal(puff.getAttribute('aria-busy'),'true');assert.equal(heart.getAttribute('aria-busy'),'false');
+ release();await request;assert.equal(puff.getAttribute('aria-busy'),'false');
+ p.failAssets();await heart.click();assert.equal(heart.getAttribute('aria-busy'),'false');assert.equal(p.get('toast').hidden,false);
 });

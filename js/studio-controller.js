@@ -31,6 +31,7 @@
       this.cancelCapture();this.action=null;this.frozen=null;this.pendingResponse=null;this.queuedResponse=null;this.responseIndex=0;
       if(wasFrozen&&!this.camera)this.paused=matchMedia('(prefers-reduced-motion: reduce)').matches;
       const c=this.context(),profile=c.useExpressions?M.PROFILES[c.characterId]:null;
+      root.StudioEffects.pinLook?.(c.useExpressions?c.outfitId:null);
       $('responseSection').hidden=!profile;
       $('personality').textContent=profile?.description||'你的角色，你的专属穿搭。';
       $('responseButtons').replaceChildren();$('cameraResponses').replaceChildren();
@@ -53,10 +54,10 @@
     async respond(id){
       if(!this.ready||!this.context().useExpressions||this.countdown.deadline!==null||!M.PROFILES[this.context().characterId]?.actions.some(x=>x[0]===id))return;
       const outfit=this.context().outfitId;
-      const token={id,outfit};this.pendingResponse=token;
-      try{await Promise.all([root.StudioEffects.loadLook(outfit),root.StudioEffects.loadCharacter?.(this.context().characterId)]);}catch(e){if(this.pendingResponse===token){this.pendingResponse=null;this.api.notify('动作素材未能载入，请重试。',true);}return;}
+      const token={id,outfit};this.pendingResponse=token;this.sync();
+      try{await Promise.all([root.StudioEffects.loadLook(outfit),root.StudioEffects.loadCharacter?.(this.context().characterId)]);}catch(e){if(this.pendingResponse===token){this.pendingResponse=null;this.sync();this.api.notify('动作素材未能载入，请重试。',true);}return;}
       if(this.pendingResponse!==token||this.context().outfitId!==outfit)return;
-      this.pendingResponse=null;
+      this.pendingResponse=null;this.sync();
       const current=this.pose();
       if(!this.camera&&current.active&&current.id===id&&!this.queuedResponse)return;
       this.frozen=null;this.paused=false;
@@ -124,7 +125,7 @@
       $('photoDate').checked=s.showDate;
       document.querySelectorAll('[data-light]').forEach(b=>{const l=M.LIGHT_PRESETS[b.dataset.light],a=this.api.settings();b.setAttribute('aria-pressed',String(s.lightEnabled&&a.lightColor===l.color&&Math.abs(a.lightIntensity-l.intensity)<.001));});
       $('fullCrop').setAttribute('aria-pressed',String(s.crop==='full'));$('halfCrop').setAttribute('aria-pressed',String(s.crop==='half'));
-      document.querySelectorAll('[data-response]').forEach(b=>{b.disabled=!this.ready||this.countdown.deadline!==null;b.setAttribute('aria-pressed',String(b.dataset.response===p.id));});
+      document.querySelectorAll('[data-response]').forEach(b=>{b.disabled=!this.ready||this.countdown.deadline!==null;b.setAttribute('aria-pressed',String(b.dataset.response===p.id));b.setAttribute('aria-busy',String(b.dataset.response===this.pendingResponse?.id));});
       const active=$('responseButtons').querySelector('[aria-pressed="true"]');
       const text=!enabled?'上传角色支持构图和灯光调整':this.paused?'动态已暂停':p.active?'正在'+(active?.textContent||'回应')+'…':this.idle?(this.context().useExpressions?'待机 · 呼吸与眨眼':'待机 · 轻微呼吸'):'点击人物或按钮，触发回应';
       if($('responseStatus').textContent!==text)$('responseStatus').textContent=text;

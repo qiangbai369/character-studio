@@ -321,6 +321,7 @@ button[aria-busy="true"] { cursor: progress; }
 .outfit-card .outfit-thumbnail { height: 68px; margin: 0 auto 8px; }
 .outfit-card > span:last-child { font-size: 10px; line-height: 1.4; color: var(--muted); }
 .outfit-card[aria-pressed="true"] > span:last-child { color: var(--ink); }
+.segmented button[aria-busy="true"] { border-style: dashed; opacity: .65; cursor: progress; }
 .outfit-button { height: 36px; padding: 0 12px; border: 1px solid var(--control-border); border-radius: var(--control-radius); background: var(--control-surface); color: var(--ink); }
 .outfit-button:hover { background: var(--control-hover); opacity: 1; }
 .outfit-button > .outfit-arrow { width: 14px; height: 14px; margin-right: 0; }

@@ -52,6 +52,7 @@
   const getCharacter = id => CHARACTERS.find(character => character.id === id);
   const forCharacter = id => LOOKS.filter(look => look.characterId === id);
   const characterForOutfit = id => getCharacter(find(id)?.characterId);
+  const thumbnailFor = id => find(id) ? 'assets/thumbnails/' + id + '.webp' : undefined;
   const frameForOutfit = id => find(id)?.frame || characterForOutfit(id)?.frame;
   const SEASONS = Object.freeze(['spring', 'summer', 'autumn', 'winter'].map((id, index) => Object.freeze({ id, label: ['春', '夏', '秋', '冬'][index] })));
   const validSeason = id => SEASONS.some(season => season.id === id);
@@ -91,7 +92,7 @@
     return legacyOutfits.has(id) ? character.legacyFrame || frameForOutfit(id) : frameForOutfit(id);
   }
   const api = { CHARACTERS, LOOKS, FRAME, SEASONS, validSeason, forSeason, selectForSeason, seasonForOutfit, seasonForRecord,
-    find, next, fromRecord, getCharacter, forCharacter, characterForOutfit, frameForOutfit, frameForRecord };
+    thumbnailFor, find, next, fromRecord, getCharacter, forCharacter, characterForOutfit, frameForOutfit, frameForRecord };
   root.SweetWardrobe = api;
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
 })(typeof window !== 'undefined' ? window : globalThis);

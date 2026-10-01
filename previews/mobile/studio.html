@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <base href="../../">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#d2c5b3">
+  <meta name="description" content="A local character studio. Shape, light and export your character in your browser.">
+  <title>手机排布预览 · Character Studio</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="previews/mobile/mobile.css">
+</head>
+<body>
+  <svg class="icon-definitions" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V4m-4 4 4-4 4 4M5 16v4h14v-4"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v12m-4-4 4 4 4-4M5 16v4h14v-4"/></symbol>
+    <symbol id="i-library" viewBox="0 0 24 24"><rect x="4" y="5" width="12" height="14" rx="2"/><path d="M20 9v10a3 3 0 0 1-3 3M8 10h4m-4 4h4"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="m9 5 11 7-11 7Z"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><path d="M9 5v14m6-14v14"/></symbol>
+    <symbol id="i-reset" viewBox="0 0 24 24"><path d="M4 10a8 8 0 1 1 0 5m0-5V4m0 6h6"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+    <symbol id="i-save" viewBox="0 0 24 24"><path d="M5 3h12l4 4v14H3V3h2m2 0v7h10V3M7 21v-7h10v7"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"/><path d="M12 2v4m0 12v4M2 12h4m12 0h4"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M3 6h18M9 6V3h6v3M6 6l1 15h10l1-15M10 10v7m4-7v7"/></symbol>
+    <symbol id="i-outfit" viewBox="0 0 24 24"><path d="m8 3-6 4 3 5 3-2v11h8V10l3 2 3-5-6-4a4 4 0 0 1-8 0Z"/></symbol>
+  </svg>
+
+  <header class="toolbar">
+    <a class="brand" href="./" aria-label="角色摄影棚首页"><span class="brand-mark">n</span><span>Character Studio</span></a>
+    <nav class="toolbar-actions" aria-label="Studio tools">
+      <button id="libraryButton" class="toolbar-button" type="button"><svg><use href="#i-library"/></svg><span>作品</span><span id="versionCount" class="count" hidden>0</span></button>
+      <details class="toolbar-more"><summary>更多</summary><div class="more-menu">
+        <button id="uploadButton" type="button">上传角色</button>
+        <button id="downloadButton" type="button">人物 PNG</button>
+        <button id="saveButton" type="button">保存版本</button>
+      </div></details>
+      <button id="photoButton" class="save-button" type="button" disabled>拍照</button>
+    </nav>
+  </header>
+
+  <main class="workspace" aria-label="Character studio">
+    <section id="stage" class="stage" aria-label="Character preview">
+      <div class="stage-tools">
+        <div class="zoom-controls" aria-label="Preview zoom">
+          <button id="zoomOut" type="button" aria-label="Zoom out">−</button>
+          <button id="zoomReset" type="button" title="Reset zoom"><span id="zoomValue">100%</span></button>
+          <button id="zoomIn" type="button" aria-label="Zoom in">+</button>
+        </div>
+        <button id="compareButton" class="compare-button" type="button" title="Hold to see the original character; keyboard: hold Space">按住对比</button>
+      </div>
+
+      <canvas id="previewCanvas" tabindex="0" aria-label="甜美女孩，点击或按回车互动"></canvas>
+      <button id="lightHandle" class="light-handle" role="slider" aria-label="灯光位置" aria-valuemin="8" aria-valuemax="92" aria-valuenow="22" title="拖动光源；方向键也可调整" disabled>☀</button>
+      <div id="countdown" class="countdown" role="status" aria-live="assertive" hidden></div>
+      <div id="headRegion" class="head-region" hidden>
+        <div class="head-region-circle" id="headMove" role="slider" tabindex="0" aria-label="Head region position" aria-valuemin="15" aria-valuemax="58" aria-valuenow="34" title="Drag to position the head region; arrow keys adjust it"><span>Head</span></div>
+        <button id="headResize" type="button" class="head-handle" aria-label="Resize head region" title="Drag to adjust the head boundary"></button>
+      </div>
+      <div id="loading" class="loading"><span class="loading-dot"></span>准备中…</div>
+
+      <div class="stage-footer">
+        <p id="stageHint" class="sr-only">点击人物互动，拖动光源调整灯光</p>
+        <button id="demoButton" class="demo-button" type="button" aria-pressed="false"><svg aria-hidden="true"><use id="demoIcon" href="#i-pause"/></svg><span id="demoLabel">暂停</span></button>
+      </div>
+    </section>
+
+    <aside class="settings" aria-label="Character controls">
+      <div class="settings-title"><p>CHARACTER</p><h1 id="characterName">甜橙</h1><div id="characterPicker" class="character-picker" role="group" aria-label="Choose a character"></div><p id="personality" class="sr-only"></p></div>
+
+      <section id="wardrobe" class="wardrobe" aria-label="OOTD outfits" aria-busy="false">
+        <div id="seasonPicker" class="season-picker" role="group" aria-label="选择季节"></div>
+        <div class="wardrobe-heading"><h2>OOTD</h2><span id="outfitCounter">—</span></div>
+        <button id="outfitButton" class="outfit-button" type="button" disabled><svg><use href="#i-outfit"/></svg><span>今日 OOTD</span><svg class="outfit-arrow" aria-hidden="true"><use href="#i-reset"/></svg></button>
+        <div id="outfitList" class="outfit-list" role="group" aria-label="Choose an outfit"></div>
+        <p id="outfitStatus" class="outfit-status sr-only" role="status" aria-live="polite">秋日款 · Autumn layers</p>
+      </section>
+
+      <section id="responseSection" class="studio-section" aria-label="角色回应">
+        <div class="section-heading"><h2>动作</h2><button id="idleButton" type="button" aria-pressed="true">待机开启</button></div>
+        <div id="responseButtons" class="segmented" role="group" aria-label="选择人物回应"></div>
+        <p id="responseStatus" class="section-note sr-only" role="status" aria-live="polite">待机 · 呼吸与眨眼</p>
+      </section>
+      <section class="studio-section" aria-label="摄影场景">
+        <div class="section-heading"><h2>场景</h2></div>
+        <div id="sceneButtons" class="scene-buttons" role="group" aria-label="选择场景">
+          <button type="button" data-scene="studio" aria-pressed="true"><i class="scene-icon scene-studio"></i>摄影棚</button>
+          <button type="button" data-scene="magazine" aria-pressed="false"><i class="scene-icon scene-magazine" aria-hidden="true">O</i>杂志封面</button>
+          <button type="button" data-scene="polaroid" aria-pressed="false"><i class="scene-icon scene-polaroid"></i>拍立得</button>
+        </div>
+      </section>
+      <fieldset class="palette-control studio-light"><legend>灯光 <button id="lightToggle" type="button" aria-pressed="true" aria-label="切换灯光">开</button></legend>
+        <div id="lightPresets" class="light-presets" role="group" aria-label="灯光风格">
+          <button type="button" data-light="day" aria-pressed="false"><i style="--light:#fff1d8"></i>日光</button>
+          <button type="button" data-light="warm" aria-pressed="true"><i style="--light:#ffd4a4"></i>暖光</button>
+          <button type="button" data-light="cool" aria-pressed="false"><i style="--light:#c6d9ed"></i>清冷</button>
+        </div>
+      </fieldset>
+      <details id="advancedSettings" class="advanced-settings"><summary>细节调整</summary>
+      <div class="advanced-light">
+        <div id="lightPalette" class="palette" aria-label="自定义光色"></div>
+        <label class="intensity-control" for="lightIntensity"><span>亮度</span><input id="lightIntensity" type="range" min="0" max="100" value="55" aria-label="灯光亮度"></label>
+        <div class="light-directions"><button id="leftLight" type="button" aria-pressed="true">左侧</button><button id="rightLight" type="button" aria-pressed="false">右侧</button><span id="lightPosition" class="sr-only"></span></div>
+      </div>
+      <div class="daily-locks"><label><input id="lockOutfit" type="checkbox">固定穿搭</label><label><input id="lockScene" type="checkbox">固定场景</label></div>
+      <button id="outfitCompare" type="button" class="detail-button">对比穿搭</button>
+      <div class="range-control">
+        <div class="control-heading"><label for="headSize">头部</label><button id="headRegionButton" class="small-icon-button" type="button" aria-label="Adjust head region" aria-pressed="false" title="Adjust the head region"><svg><use href="#i-target"/></svg></button></div>
+        <input id="headSize" type="range" min="-100" max="100" value="0" aria-label="头部">
+        <div class="range-endpoints"><span>小</span><span>大</span></div>
+      </div>
+      <div class="range-control">
+        <div class="control-heading"><label for="bodyShape">身形</label><output id="bodyShapeOutput" for="bodyShape"></output></div>
+        <input id="bodyShape" type="range" min="-100" max="100" value="0" aria-label="身形">
+        <div class="range-endpoints"><span>纤细</span><span>饱满</span></div>
+      </div>
+      <div class="range-control">
+        <div class="control-heading"><label for="height">身高</label><output id="heightOutput" for="height"></output></div>
+        <input id="height" type="range" min="-100" max="100" value="0" aria-label="身高">
+        <div class="range-endpoints"><span>矮</span><span>高</span></div>
+      </div>
+
+      <fieldset class="palette-control background-control"><legend>底色与 PNG 背景</legend><div id="backgroundPalette" class="palette"></div></fieldset>
+      <button id="resetButton" class="reset-button" type="button"><svg><use href="#i-reset"/></svg>恢复原样</button>
+      </details>
+    </aside>
+  </main>
+  <div id="cameraControls" class="camera-controls" hidden>
+    <div id="cameraResponses" class="segmented" role="group" aria-label="拍照动作"></div>
+    <button id="exitCamera" type="button">← 返回</button>
+    <div class="segmented" role="group" aria-label="拍照构图"><button id="fullCrop" type="button" aria-pressed="true">全身</button><button id="halfCrop" type="button" aria-pressed="false">半身</button></div>
+    <details class="camera-options"><summary>构图</summary><div class="camera-popover">
+      <div class="segmented" role="group" aria-label="照片比例"><button type="button" data-ratio="portrait" aria-pressed="true">4:5</button><button type="button" data-ratio="square" aria-pressed="false">1:1</button><button type="button" data-ratio="wallpaper" aria-pressed="false">9:16</button></div>
+      <label class="intensity-control">大小<input id="photoScale" type="range" min="75" max="120" value="100" aria-label="人物大小"></label>
+      <input id="photoCaption" type="text" maxlength="26" placeholder="照片标题" aria-label="照片标题">
+      <div class="caption-options"><label><input id="photoDate" type="checkbox">日期</label><button id="resetComposition" type="button">居中</button></div>
+    </div></details>
+    <button id="captureButton" class="save-button" type="button">● 拍摄</button>
+    <button id="cancelCapture" type="button" hidden>取消</button>
+  </div>
+  <dialog id="photoDialog" class="photo-dialog" aria-labelledby="photoTitle">
+    <div class="library-header"><div><p>YOUR OOTD</p><h2 id="photoTitle">这一刻</h2></div><button id="closePhoto" class="small-icon-button" type="button" aria-label="关闭照片"><svg><use href="#i-close"/></svg></button></div>
+    <img id="photoResult" alt="角色照片">
+    <div class="photo-actions"><button id="retakePhoto" class="secondary-button" type="button">调整重拍</button><button id="savePhoto" class="secondary-button" type="button">收藏</button><button id="downloadPhoto" class="save-button" type="button">下载照片</button></div>
+
+  </dialog>
+
+  <dialog id="libraryDialog" class="library-dialog" aria-labelledby="libraryTitle">
+    <div class="library-header"><div><p>COLLECTION</p><h2 id="libraryTitle">作品</h2></div><button id="closeLibrary" class="small-icon-button" type="button" aria-label="Close saved versions"><svg><use href="#i-close"/></svg></button></div>
+    <div class="library-tabs segmented" role="group" aria-label="作品分类"><button type="button" data-library="photos" aria-pressed="true">照片</button><button type="button" data-library="versions" aria-pressed="false">版本</button><button type="button" data-library="characters" aria-pressed="false">角色</button></div>
+    <div id="libraryList" class="library-list"></div>
+
+  </dialog>
+  <dialog id="outfitCompareDialog" class="outfit-compare-dialog" aria-labelledby="compareTitle"><div class="library-header"><h2 id="compareTitle">穿搭</h2><button id="closeOutfitCompare" class="small-icon-button" type="button" aria-label="关闭穿搭对比"><svg><use href="#i-close"/></svg></button></div><div id="outfitCompareList" class="outfit-compare-list"></div></dialog>
+  <input id="fileInput" type="file" accept="image/png,image/jpeg,image/webp" hidden>
+  <input id="customLight" type="color" value="#b28eff" class="hidden-color" tabindex="-1" aria-label="Custom light colour">
+  <a id="downloadLink" hidden download="sweet-girl.png">Download prepared PNG</a>
+  <img id="exportImage" hidden alt="Prepared PNG export">
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  <noscript><p class="noscript">Enable JavaScript to use the character studio.</p></noscript>
+  <script src="previews/mobile/mobile.js"></script>
+  <script id="studioBootstrap">
+    (async function () {
+      // Load dependencies in order so a dropped request cannot start an incomplete app.
+      const files=['js/model.js','js/renderer.js','js/storage.js','js/wardrobe.js','js/studio-model.js','js/studio-effects.js','js/studio-controller.js','js/app.js'];
+      function load(src) {
+        return new Promise((resolve,reject) => {
+          const script=document.createElement('script');let settled=false;
+          const finish=success => {
+            if(settled)return;settled=true;clearTimeout(timer);
+            if(success)resolve();else{script.remove();reject(new Error('Script load failed: '+src));}
+          };
+          const timer=setTimeout(()=>finish(false),8000);
+          script.src=src;script.onload=()=>finish(true);script.onerror=()=>finish(false);
+          document.head.appendChild(script);
+        });
+      }
+      try {
+        for(const file of files) {
+          for(let attempt=0;attempt<3;attempt++) {
+            try{await load(file+(attempt?'?retry='+attempt+'&t='+Date.now():''));break;}
+            catch(error){if(attempt===2)throw error;}
+          }
+        }
+      } catch(error) {
+        console.error(error);
+        const loading=document.getElementById('loading'),reload=document.createElement('button');
+        reload.type='button';reload.textContent='重新加载';reload.className='save-button';reload.onclick=()=>location.reload();
+        loading.setAttribute('role','alert');loading.replaceChildren(document.createTextNode('加载未完成'),reload);
+      }
+    })();
+  </script>
+</body>
+</html>

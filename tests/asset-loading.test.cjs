@@ -18,3 +18,18 @@ test('new seasonal looks load their own action assets once instead of old outfit
   assert.equal(requests.filter(url=>url.includes('sweet-summer-')).length,2);
   assert.equal(requests.filter(url=>url.includes('cool-winter-')).length,3);
 });
+test('motion previews use lossless delivery images and fall back to original PNG on failure',async()=>{
+ const requests=[];class Image{set src(url){requests.push(url);queueMicrotask(()=>url.endsWith('.webp')?this.onerror():this.onload());}}
+ const browserStub={StudioModel:require('../js/studio-model.js')};
+ vm.runInNewContext(fs.readFileSync(require.resolve('../js/studio-effects.js'),'utf8'),{window:browserStub,Image});
+ await browserStub.StudioEffects.loadCharacter('cool');
+ assert.ok(requests[0].endsWith('.webp'),'large PNG still loaded for an unchanged motion preview');
+ assert.equal(requests[1],'assets/motion/responses-v1/cool-blink.png');
+});
+test('decoded gestures have a bounded cache that keeps the visible character and reloads evicted looks',async()=>{
+ const {E,requests}=effects();assert.equal(typeof E.pinLook,'function');
+ E.pinLook('autumn');await E.loadLook('autumn');
+ for(const id of ['blue','polo','sweet-summer','sweet-winter','sweet-summer-2'])await E.loadLook(id);
+ const count=requests.length;await E.loadLook('autumn');assert.equal(requests.length,count,'active gestures were discarded');
+ await E.loadLook('blue');assert.equal(requests.length,count+2,'old decoded gestures accumulated without a bound');
+});

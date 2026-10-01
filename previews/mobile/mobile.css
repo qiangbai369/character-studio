@@ -1,0 +1,71 @@
+/* Isolated layout proposal. This stylesheet is not part of the production page. */
+.mobile-tabs { display:none; }
+.mobile-panel[hidden] { display:none; }
+@media (max-width:899px) {
+  html,body { min-width:0; }
+  .toolbar { height:64px; padding:0 20px; gap:10px; }
+  .brand { font-size:11px; letter-spacing:.1px; }
+  .brand-mark { width:23px; height:23px; }
+  .toolbar-actions { gap:14px; }
+  .toolbar-button { min-width:30px; min-height:44px; justify-content:center; }
+  .toolbar-more summary { min-height:44px; display:flex; align-items:center; }
+  #photoButton { min-height:38px; padding:0 15px; font-size:11px; border-radius:999px; }
+  .workspace { height:auto; min-height:0; }
+  .stage { position:relative; inset:auto; width:100%; height:52svh; min-height:320px; max-height:540px; }
+  .stage-tools,.stage-footer { left:20px; right:20px; }
+  .stage-tools { top:4px; }
+  .stage-footer { bottom:6px; }
+  .zoom-controls button { min-width:34px; height:32px; }
+  .compare-button { min-height:32px; }
+  .demo-button { min-height:34px; }
+  #previewCanvas { touch-action:pan-y; }
+  .settings { position:relative; inset:auto; transform:none; width:calc(100% - 40px); max-width:440px; overflow:visible; margin:10px auto max(24px,env(safe-area-inset-bottom)); padding:0; }
+  .settings-title { margin:0 0 12px; }
+  .settings-title > p:first-child,.settings-title h1 { display:none; }
+  .character-picker { gap:8px; }
+  .character-choice { min-height:46px; height:46px; font-size:12px; gap:8px; padding:5px 8px; border-radius:10px; }
+  .character-thumbnail { height:34px; }
+  .mobile-tabs { display:flex; gap:24px; margin:4px 0 16px; border-bottom:1px solid var(--line); }
+  .mobile-tabs button { min-height:42px; padding:4px 2px; color:var(--muted); font-size:12px; position:relative; }
+  .mobile-tabs button[aria-selected="true"] { color:var(--ink); }
+  .mobile-tabs button[aria-selected="true"]::after { content:''; position:absolute; height:2px; background:var(--ink); left:0; right:0; bottom:-1px; }
+  .mobile-panel { min-height:225px; }
+  .season-picker { margin:0 0 12px; gap:4px; }
+  .season-picker button { min-height:38px; padding:8px; font-size:12px; }
+  .wardrobe { margin:0; }
+  .wardrobe-heading { display:none; }
+  .outfit-button { height:40px; margin-bottom:12px; font-size:11px; border-radius:9px; }
+  .outfit-list { gap:10px; }
+  .outfit-card { display:flex; align-items:center; justify-content:center; gap:12px; min-height:80px; padding:8px 4px; border-radius:10px; }
+  .outfit-card .outfit-thumbnail { height:62px; flex-shrink:0; margin:0; }
+  .outfit-card > span:last-child { font-size:11px; }
+  .studio-section { margin:0 0 20px; }
+  .section-heading h2,.studio-light legend { font-size:12px; }
+  .section-heading > button,.studio-light legend button { min-height:36px; padding:6px 8px; font-size:11px; }
+  .segmented button { min-height:44px; font-size:12px; padding:9px 8px; }
+  .scene-buttons button { min-height:82px; font-size:11px; }
+  .light-presets button { min-height:44px; font-size:11px; }
+  .advanced-settings summary { min-height:44px; display:flex; align-items:center; font-size:12px; }
+  .camera-mode .toolbar { height:52px; }
+  .camera-mode .workspace { height:calc(100svh - 215px); min-height:0; display:grid; align-items:center; }
+  .camera-mode .stage { height:auto; min-height:0; max-height:none; width:min(calc(100vw - 40px),calc((100svh - 220px) * var(--photo-ratio,.8))); margin:auto; }
+  .camera-mode #previewCanvas { touch-action:none; }
+  .camera-controls { left:16px; right:16px; bottom:max(12px,env(safe-area-inset-bottom)); transform:none; padding:12px; gap:8px; grid-template-columns:auto 1fr auto auto; border-radius:14px; }
+  .camera-controls > button { min-height:40px; }
+  .camera-controls .segmented button { min-height:38px; font-size:11px; }
+  #captureButton { padding:8px 12px; }
+  .camera-options summary { min-height:40px; display:flex; align-items:center; }
+  .camera-popover { right:-5px; width:min(270px,calc(100vw - 40px)); }
+  .photo-dialog,.library-dialog,.outfit-compare-dialog { box-sizing:border-box; width:calc(100vw - 28px); max-width:430px; max-height:calc(100svh - 28px); padding:18px; }
+  #photoResult { height:auto; max-height:54svh; max-width:100%; }
+  .photo-actions { display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; }
+  .photo-actions button { padding:10px 6px; font-size:11px; min-height:44px; }
+  .small-icon-button { min-width:40px; min-height:40px; }
+  .library-tabs .segmented button { min-height:44px; }
+}
+@media (max-width:899px) and (orientation:landscape) {
+  .stage { height:70svh; min-height:280px; }
+  .camera-mode .workspace { height:calc(100svh - 175px); min-height:0; padding-bottom:0; }
+  .camera-mode .stage { width:min(260px,calc((100svh - 180px) * var(--photo-ratio,.8))); }
+  .camera-controls { max-width:450px; margin:auto; }
+}

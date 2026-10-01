@@ -8,7 +8,7 @@ try{canvas=require('@napi-rs/canvas');}catch{}
 const root=path.resolve(__dirname,'..');
 async function studio(overrides={}){
   class AssetImage extends canvas.Image{
-    set src(value){const file=value.split('?')[0];super.src=overrides[file]||path.join(root,file);}
+    set src(value){const file=value.split('?')[0],original=file.replace(/\.webp$/,'.png');super.src=overrides[file]||overrides[original]||path.join(root,file);}
     get src(){return super.src;}
   }
   const window={StudioModel:require('../js/studio-model.js'),NieveModel:require('../js/model.js')};

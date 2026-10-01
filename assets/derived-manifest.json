@@ -1,0 +1,777 @@
+{
+  "generator": "tools/build-display-assets.cjs",
+  "thumbnailCanvas": [
+    192,
+    288
+  ],
+  "entries": [
+    {
+      "source": "assets/outfits/sweet-autumn-v2.png",
+      "file": "assets/thumbnails/autumn.webp",
+      "sourceHash": "548bde6fa0f799adccfd9ef04fadaa7fa29861b1d64a157cda31f92e859171da",
+      "sourceBytes": 2177454,
+      "bytes": 16184,
+      "kind": "thumbnail"
+    },
+    {
+      "source": "assets/outfits/sweet-blue-v2.png",
+      "file": "assets/thumbnails/blue.webp",
+      "sourceHash": "ffd086d77fdeae759981f7157334e8a7dcdb2cf567193ec2023a3e0ecb6c19b2",
+      "sourceBytes": 2036690,
+      "bytes": 15320,
+      "kind": "thumbnail"
+    },
+    {
+      "source": "assets/outfits/sweet-polo-v2.png",
+      "file": "assets/thumbnails/polo.webp",
+      "sourceHash": "15100c66fe029e071324c33f320abc3fed5bfb9c8e3f66e506cbe241bafac462",
+      "sourceBytes": 1997617,
+      "bytes": 15350,
+      "kind": "thumbnail"
+    },
+    {
+      "source": "assets/cool-girl-reference.png",
+      "file": "assets/thumbnails/cool-original.webp",
+      "sourceHash": "25fb9cc42bebb67e1c7df6900d1e4e1614030abcd8847a9280538a4cfc45bddd",
+      "sourceBytes": 1079153,
+      "bytes": 12760,
+      "kind": "thumbnail"
+    },
+    {
+      "source": "assets/outfits/cool-street-v2.png",
+      "file": "assets/thumbnails/cool-street.webp",
+      "sourceHash": "edc6103eafff53f1bddca0a7e4b9382d478b20f732b3d180cf40837aad207cfd",
+      "sourceBytes": 1756654,
+      "bytes": 13098,
+      "kind": "thumbnail"
+    },
+    {
+      "source": "assets/outfits/cool-olive-v2.png",
+      "file": "assets/thumbnails/cool-olive.webp",
+      "sourceHash": "3135013fd2230dae13a3cda79b476a3008d606f5a282258c1710db01b1417f96",
+      "sourceBytes": 1973830,
+      "bytes": 14592,
+      "kind": "thumbnail"
+    },
+    {
+      "source": "assets/literary-girl-reference.png",
+      "file": "assets/thumbnails/literary-bookshop.webp",
+      "sourceHash": "ff21fffd420b1dd113f931b3f86c5150ddc76ded77ff32e5a59988696bc7e7d2",
+      "sourceBytes": 2011129,
+      "bytes": 14946,
+      "kind": "thumbnail"
+    },
+    {
+      "source": "assets/outfits/literary-campus-v1.png",
+      "file": "assets/thumbnails/literary-campus.webp",
+      "sourceHash": "157089e6165bceb68f1e18a3664456b7ed9ac0d61d5d1c9e28666b16a13d7d25",
+      "sourceBytes": 1884240,
+      "bytes": 13862,
+      "kind": "thumbnail"
+    },
+    {
+      "source": "assets/outfits/literary-weekend-v1.png",
+      "file": "assets/thumbnails/literary-weekend.webp",
+      "sourceHash": "7ad8db1a39faad4cfd3a5512ed2d71cb39958ff500204a0d4567e1fdaebd4343",
+      "sourceBytes": 1967099,
+      "bytes": 14420,
+      "kind": "thumbnail"
+    },
+    {
+      "source": "assets/outfits/sweet-summer-v1.png",
+      "file": "assets/thumbnails/sweet-summer.webp",
+      "sourceHash": "35cb88edccebc3f94bb2a5d52eaa008b8108a3b4e7b1f7080e28a4564d17a1ea",
+      "sourceBytes": 2041012,
+      "bytes": 15192,
+      "kind": "thumbnail"
+    },
+    {
+      "source": "assets/outfits/sweet-winter-v1.png",
+      "file": "assets/thumbnails/sweet-winter.webp",
+      "sourceHash": "d6ba986d19ebed2755f275e82e2bffd495e9e227a92a7bb11c2401157c4c6b6b",
+      "sourceBytes": 2073754,
+      "bytes": 15402,
+      "kind": "thumbnail"
+    },
+    {
+      "source": "assets/outfits/cool-summer-v1.png",
+      "file": "assets/thumbnails/cool-summer.webp",
+      "sourceHash": "3cf863450d2f7103d21a1077156685949e5ec0fd80634ed972224b58a9550008",
+      "sourceBytes": 1701513,
+      "bytes": 12902,
+      "kind": "thumbnail"
+    },
+    {
+      "source": "assets/outfits/cool-winter-v1.png",
+      "file": "assets/thumbnails/cool-winter.webp",
+      "sourceHash": "578cfe5d73f08a69f8220ba1ac2ad7798235be9f87e59e934c9580beb38f731d",
+      "sourceBytes": 1680803,
+      "bytes": 11818,
+      "kind": "thumbnail"
+    },
+    {
+      "source": "assets/outfits/literary-summer-v1.png",
+      "file": "assets/thumbnails/literary-summer.webp",
+      "sourceHash": "6d47db4e7579dd1d78c5bf1a1501ae4d264ceee00e0e6f59b40c6e7e87d9f4a2",
+      "sourceBytes": 1993284,
+      "bytes": 15422,
+      "kind": "thumbnail"
+    },
+    {
+      "source": "assets/outfits/literary-winter-v1.png",
+      "file": "assets/thumbnails/literary-winter.webp",
+      "sourceHash": "bbf9d6f449863c908c25e1e3a68556d8e88cc77da1e74ff2560c6d3c605136e0",
+      "sourceBytes": 2041206,
+      "bytes": 14514,
+      "kind": "thumbnail"
+    },
+    {
+      "source": "assets/outfits/sweet-summer-2.png",
+      "file": "assets/thumbnails/sweet-summer-2.webp",
+      "sourceHash": "33e3757c0a648147dc41b63cc5710b30bb1e0246ddffb8ec945fca55ac40e51b",
+      "sourceBytes": 2058272,
+      "bytes": 15214,
+      "kind": "thumbnail"
+    },
+    {
+      "source": "assets/outfits/sweet-autumn-2.png",
+      "file": "assets/thumbnails/sweet-autumn-2.webp",
+      "sourceHash": "61a406e57f6856ff78c6e2b807e6482c0821cf0a83aa1e49f5c1547bd7953309",
+      "sourceBytes": 2200123,
+      "bytes": 16314,
+      "kind": "thumbnail"
+    },
+    {
+      "source": "assets/outfits/sweet-winter-2.png",
+      "file": "assets/thumbnails/sweet-winter-2.webp",
+      "sourceHash": "efe6cd672e38c0c44662ff7c2a605ca967247d804c0a1b50d494150a2a829cfe",
+      "sourceBytes": 2150616,
+      "bytes": 15562,
+      "kind": "thumbnail"
+    },
+    {
+      "source": "assets/outfits/cool-spring-2.png",
+      "file": "assets/thumbnails/cool-spring-2.webp",
+      "sourceHash": "b0d7deeba25e6b60ed8590fff61cca5564dad17f2dafdc129ba7f851aa5d48bd",
+      "sourceBytes": 1793903,
+      "bytes": 12808,
+      "kind": "thumbnail"
+    },
+    {
+      "source": "assets/outfits/cool-summer-2.png",
+      "file": "assets/thumbnails/cool-summer-2.webp",
+      "sourceHash": "2d53eddbf523344fa77b9ca6c46f83c8ee1bf958b01d9c9bdce7da06b47c1023",
+      "sourceBytes": 1696293,
+      "bytes": 12454,
+      "kind": "thumbnail"
+    },
+    {
+      "source": "assets/outfits/cool-winter-2.png",
+      "file": "assets/thumbnails/cool-winter-2.webp",
+      "sourceHash": "31a3828cb799e348f7c9a5416f296b316bbb7a8d09015a852c2c87159fb205da",
+      "sourceBytes": 1791250,
+      "bytes": 12560,
+      "kind": "thumbnail"
+    },
+    {
+      "source": "assets/outfits/literary-spring-2.png",
+      "file": "assets/thumbnails/literary-spring-2.webp",
+      "sourceHash": "eb6b4fad2312e77c2ede42fe75d82dacb95cf1a2c69a080b0be0efbfa2b0a3df",
+      "sourceBytes": 1848798,
+      "bytes": 14700,
+      "kind": "thumbnail"
+    },
+    {
+      "source": "assets/outfits/literary-summer-2.png",
+      "file": "assets/thumbnails/literary-summer-2.webp",
+      "sourceHash": "786aba0fbf3e4bcce01f7823dc8415f66d4d4567846279d4a9843c744cbc2b8d",
+      "sourceBytes": 1962382,
+      "bytes": 15366,
+      "kind": "thumbnail"
+    },
+    {
+      "source": "assets/outfits/literary-winter-2.png",
+      "file": "assets/thumbnails/literary-winter-2.webp",
+      "sourceHash": "ffbf47e378c8839faf5e73461b8a95592dde09aa602abd45cffc90b21eb41b33",
+      "sourceBytes": 1990856,
+      "bytes": 14372,
+      "kind": "thumbnail"
+    },
+    {
+      "source": "assets/motion/responses-v1/cool-blink.png",
+      "file": "assets/motion/responses-v1/cool-blink.webp",
+      "sourceHash": "498b518685fa69a93dec29d09092db541318aee93319b039e123b52ed95ede90",
+      "sourceBytes": 1664671,
+      "bytes": 597336,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/responses-v1/cool-brow.png",
+      "file": "assets/motion/responses-v1/cool-brow.webp",
+      "sourceHash": "47c2a70b3c9f0f9e60f410cc962a7010830c1948566e9f12ebbb39f4c2e3d25f",
+      "sourceBytes": 1671552,
+      "bytes": 594734,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/responses-v1/literary-blink.png",
+      "file": "assets/motion/responses-v1/literary-blink.webp",
+      "sourceHash": "d4204bb50b4165c8d5065c93194aaad415b0c0f7afe5afa95a0fcea3f0249aea",
+      "sourceBytes": 1934133,
+      "bytes": 816252,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/responses-v1/literary-smile.png",
+      "file": "assets/motion/responses-v1/literary-smile.webp",
+      "sourceHash": "83bf4096981e3e953452e0f54873b1791a7944069d8342b93bacc99aca7199d1",
+      "sourceBytes": 1939325,
+      "bytes": 828536,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/responses-v2/cool-olive-arms.png",
+      "file": "assets/motion/responses-v2/cool-olive-arms.webp",
+      "sourceHash": "acaf3e06a7b46413559dc42c9cfc93511f0d91f1e591f779ac7147adc8c5e3b9",
+      "sourceBytes": 1865467,
+      "bytes": 758180,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/responses-v2/cool-olive-hat.png",
+      "file": "assets/motion/responses-v2/cool-olive-hat.webp",
+      "sourceHash": "d63d7d802dc042759a53a2dd9232e2cb9273a731ba758579333998eec11537de",
+      "sourceBytes": 1984326,
+      "bytes": 845066,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/responses-v2/cool-olive-peace.png",
+      "file": "assets/motion/responses-v2/cool-olive-peace.webp",
+      "sourceHash": "9762523aadfeb705579ee9da72dd623aa91979c3ab665ffa883c081d308ffb60",
+      "sourceBytes": 1948276,
+      "bytes": 811990,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/responses-v2/cool-original-arms.png",
+      "file": "assets/motion/responses-v2/cool-original-arms.webp",
+      "sourceHash": "ad0af9e0824b97e00ced5a0d39a8dbd75a88b1c4e1de9f5df37796c84d341dbe",
+      "sourceBytes": 1665177,
+      "bytes": 591986,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/responses-v2/cool-original-hat.png",
+      "file": "assets/motion/responses-v2/cool-original-hat.webp",
+      "sourceHash": "adb0a0b2a6b2965a159fec4d0d0af0cbaaf3c50a61614cd60dded74067d73f9a",
+      "sourceBytes": 1736309,
+      "bytes": 641370,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/responses-v2/cool-original-peace.png",
+      "file": "assets/motion/responses-v2/cool-original-peace.webp",
+      "sourceHash": "692c16245f80694b732aba3a1d56f1563e6cba5ecab8096091ed4dcbfd755db8",
+      "sourceBytes": 1707011,
+      "bytes": 626792,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/responses-v2/cool-street-arms.png",
+      "file": "assets/motion/responses-v2/cool-street-arms.webp",
+      "sourceHash": "7cf03fdc76fe2a0bdc161617df46d51e20d64f813142bc462b4ad47695c351bb",
+      "sourceBytes": 1703074,
+      "bytes": 613796,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/responses-v2/cool-street-hat.png",
+      "file": "assets/motion/responses-v2/cool-street-hat.webp",
+      "sourceHash": "f408934f7ad36cecb09bf2a7360b96478d813dbdd35cc91050b12b6d6ad7364a",
+      "sourceBytes": 1801571,
+      "bytes": 686024,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/responses-v2/cool-street-peace.png",
+      "file": "assets/motion/responses-v2/cool-street-peace.webp",
+      "sourceHash": "a43f7891997001e09f904f5150921fb08e3e3e5431c6c8ae8ab3c27eb33f859e",
+      "sourceBytes": 1761194,
+      "bytes": 658926,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/responses-v2/literary-bookshop-glasses.png",
+      "file": "assets/motion/responses-v2/literary-bookshop-glasses.webp",
+      "sourceHash": "54668523b3147cf7404f0476cd77af613ae47ac8b0835f86003ccf98e4fa0134",
+      "sourceBytes": 1938629,
+      "bytes": 825570,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/responses-v2/literary-bookshop-think.png",
+      "file": "assets/motion/responses-v2/literary-bookshop-think.webp",
+      "sourceHash": "43b7e534a013c017997c1de4f36148f4d1e408b483a9dd1cca0470f94754003f",
+      "sourceBytes": 1880051,
+      "bytes": 779704,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/responses-v2/literary-bookshop-wave.png",
+      "file": "assets/motion/responses-v2/literary-bookshop-wave.webp",
+      "sourceHash": "de076ec73dac0045cf713d717b1ad187525549488e172d76d314badaf75e7cbd",
+      "sourceBytes": 1965473,
+      "bytes": 838940,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/responses-v2/literary-campus-glasses.png",
+      "file": "assets/motion/responses-v2/literary-campus-glasses.webp",
+      "sourceHash": "9d43a8cd2ded7a43899dd8db004909c33ee090761e61079fab69e0778946fcaa",
+      "sourceBytes": 1812140,
+      "bytes": 707582,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/responses-v2/literary-campus-think.png",
+      "file": "assets/motion/responses-v2/literary-campus-think.webp",
+      "sourceHash": "6e06f3c4c41f44ab19dcfe2629a3b67be09d588f68fcfe60401f7c8597327f34",
+      "sourceBytes": 1786937,
+      "bytes": 689832,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/responses-v2/literary-campus-wave.png",
+      "file": "assets/motion/responses-v2/literary-campus-wave.webp",
+      "sourceHash": "3ff0726cb3f49cb2dd59ded00857658f9424186f11eff8573678624a6a15abd6",
+      "sourceBytes": 1865618,
+      "bytes": 738506,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/responses-v2/literary-weekend-glasses.png",
+      "file": "assets/motion/responses-v2/literary-weekend-glasses.webp",
+      "sourceHash": "dd8b8ef268c58d8a159a3632551724bd6d28810ddcae046f11ee19f62d35b72a",
+      "sourceBytes": 1917156,
+      "bytes": 774180,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/responses-v2/literary-weekend-think.png",
+      "file": "assets/motion/responses-v2/literary-weekend-think.webp",
+      "sourceHash": "994e0ead71df5c7987ff43e70b6fa1eb198209a7eeba15e6a6b8cd885e0adee9",
+      "sourceBytes": 1876080,
+      "bytes": 743404,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/responses-v2/literary-weekend-wave.png",
+      "file": "assets/motion/responses-v2/literary-weekend-wave.webp",
+      "sourceHash": "5f3f6171f0c5ae04808c320d45f9c6f63a92d4b226a0567d31c9409148245655",
+      "sourceBytes": 1916045,
+      "bytes": 781124,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/seasons-v1/cool-summer-arms.png",
+      "file": "assets/motion/seasons-v1/cool-summer-arms.webp",
+      "sourceHash": "e6fdd2ad089658bd253a813ad4ed1c13deee5dd48659a228313f860d906a95a3",
+      "sourceBytes": 1679329,
+      "bytes": 587346,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/seasons-v1/cool-summer-hat.png",
+      "file": "assets/motion/seasons-v1/cool-summer-hat.webp",
+      "sourceHash": "e49790180a0ae3a29efa33840304895e8db81403bd5f824c4947270f6a1a769b",
+      "sourceBytes": 1754824,
+      "bytes": 632622,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/seasons-v1/cool-summer-peace.png",
+      "file": "assets/motion/seasons-v1/cool-summer-peace.webp",
+      "sourceHash": "2c35484ea12453e626c4ab8343c3c15a2f1753851870a5a7f4fa1a0af4dc5266",
+      "sourceBytes": 1728026,
+      "bytes": 619902,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/seasons-v1/cool-winter-arms.png",
+      "file": "assets/motion/seasons-v1/cool-winter-arms.webp",
+      "sourceHash": "2cb2d1d38b9566c486055c380fc7311a146cec290286970af2fd501ef0ff7ebd",
+      "sourceBytes": 1642367,
+      "bytes": 593472,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/seasons-v1/cool-winter-hat.png",
+      "file": "assets/motion/seasons-v1/cool-winter-hat.webp",
+      "sourceHash": "8dfaaa56e7b3552251a9951dfe2da3c618e460386bc1f2bf2c2fc477135f15c3",
+      "sourceBytes": 1733363,
+      "bytes": 660150,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/seasons-v1/cool-winter-peace.png",
+      "file": "assets/motion/seasons-v1/cool-winter-peace.webp",
+      "sourceHash": "137acf94efaf3ade0e2d67f22d7f3dcede298e0165f5dcb5ba41f7a63e23f299",
+      "sourceBytes": 1767040,
+      "bytes": 676284,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/seasons-v1/literary-summer-glasses.png",
+      "file": "assets/motion/seasons-v1/literary-summer-glasses.webp",
+      "sourceHash": "6cc498cd64977354c87f01c7b4e94e1294410dc346aae91d4fdd5c3b307ccdd2",
+      "sourceBytes": 1925008,
+      "bytes": 775076,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/seasons-v1/literary-summer-think.png",
+      "file": "assets/motion/seasons-v1/literary-summer-think.webp",
+      "sourceHash": "05f34c937abdfb9fc36cd8bd739a48a176b4b1b9ddf1f02f22b34537347cde5e",
+      "sourceBytes": 1897974,
+      "bytes": 754236,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/seasons-v1/literary-summer-wave.png",
+      "file": "assets/motion/seasons-v1/literary-summer-wave.webp",
+      "sourceHash": "1ac6bd740ec7dacceceff449a6c06bc97756ef2354d6ca65341fdb2e69256f3e",
+      "sourceBytes": 1956136,
+      "bytes": 798240,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/seasons-v1/literary-winter-glasses.png",
+      "file": "assets/motion/seasons-v1/literary-winter-glasses.webp",
+      "sourceHash": "edb41f97d8ec84ac1f5f3ca6ee361c51519e27ef63a3ef376f5e9e0244c69aa9",
+      "sourceBytes": 2051421,
+      "bytes": 847702,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/seasons-v1/literary-winter-think.png",
+      "file": "assets/motion/seasons-v1/literary-winter-think.webp",
+      "sourceHash": "e152f7e57f19a382ae92ae4a6a1b55e3bc50b9b755c1de4d752e332f46376dd9",
+      "sourceBytes": 1940650,
+      "bytes": 777044,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/seasons-v1/literary-winter-wave.png",
+      "file": "assets/motion/seasons-v1/literary-winter-wave.webp",
+      "sourceHash": "4becfdba4aec6b5b7b055c471131bb7a57da514c57315b54d761e0e226385485",
+      "sourceBytes": 2031441,
+      "bytes": 839162,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/seasons-v1/sweet-summer-heart.png",
+      "file": "assets/motion/seasons-v1/sweet-summer-heart.webp",
+      "sourceHash": "27923fbd1c9bd1dfa0efa0d304763f30204e55b9a599193b31f1240bde56a207",
+      "sourceBytes": 1999031,
+      "bytes": 858786,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/seasons-v1/sweet-summer-puff.png",
+      "file": "assets/motion/seasons-v1/sweet-summer-puff.webp",
+      "sourceHash": "4629425b263a62360391099201c3409af265662c308f4577c07e2501c5b59b97",
+      "sourceBytes": 1996297,
+      "bytes": 860500,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/seasons-v1/sweet-winter-heart.png",
+      "file": "assets/motion/seasons-v1/sweet-winter-heart.webp",
+      "sourceHash": "058971ea9f23b0502f0c3c0ee79de358c25b691afae8795141387e6dd80c86d1",
+      "sourceBytes": 2027577,
+      "bytes": 843320,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/seasons-v1/sweet-winter-puff.png",
+      "file": "assets/motion/seasons-v1/sweet-winter-puff.webp",
+      "sourceHash": "eefe2b31b1d7c6140d7c210b5ed87f56cc40c8f6b59a6a56cf8edf11666a19a9",
+      "sourceBytes": 2023691,
+      "bytes": 855464,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/seasons-v2/cool-spring-2-arms.png",
+      "file": "assets/motion/seasons-v2/cool-spring-2-arms.webp",
+      "sourceHash": "ddebd83615f2888ba3a19e979d3a1dd29558a30b674c22d8bff9c6d7ab46b380",
+      "sourceBytes": 1769665,
+      "bytes": 656048,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/seasons-v2/cool-spring-2-hat.png",
+      "file": "assets/motion/seasons-v2/cool-spring-2-hat.webp",
+      "sourceHash": "29c8774515864047672fd50be99ff3ff021526185461a360578958a88a541fbe",
+      "sourceBytes": 1888309,
+      "bytes": 730130,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/seasons-v2/cool-spring-2-peace.png",
+      "file": "assets/motion/seasons-v2/cool-spring-2-peace.webp",
+      "sourceHash": "67a4d1b1f090c9bfe7b4adb088c362f0a44d007363492995bd2bb4dd7b4f5201",
+      "sourceBytes": 1846492,
+      "bytes": 712038,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/seasons-v2/cool-summer-2-arms.png",
+      "file": "assets/motion/seasons-v2/cool-summer-2-arms.webp",
+      "sourceHash": "01dc5628bb6212aa0abd1dd95ac1d22723f3afb8138278f14da4dce75e603c5b",
+      "sourceBytes": 1669851,
+      "bytes": 593174,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/seasons-v2/cool-summer-2-hat.png",
+      "file": "assets/motion/seasons-v2/cool-summer-2-hat.webp",
+      "sourceHash": "45fa3f2e8636f7d144387d0b21017d028633bd863c651e07e862f52a8ebee306",
+      "sourceBytes": 1755475,
+      "bytes": 653186,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/seasons-v2/cool-summer-2-peace.png",
+      "file": "assets/motion/seasons-v2/cool-summer-2-peace.webp",
+      "sourceHash": "0acf824cc55b98a03ccb69a26eb812c21bee92218e5f12e4ee58f8f82e0765d7",
+      "sourceBytes": 1735471,
+      "bytes": 639070,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/seasons-v2/cool-winter-2-arms.png",
+      "file": "assets/motion/seasons-v2/cool-winter-2-arms.webp",
+      "sourceHash": "97634c119c12a905bcc591bf09c6dfc3efe22d3af434ffcddbab1b1a6c325493",
+      "sourceBytes": 1746113,
+      "bytes": 650316,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/seasons-v2/cool-winter-2-hat.png",
+      "file": "assets/motion/seasons-v2/cool-winter-2-hat.webp",
+      "sourceHash": "96fdbe1761cba20b110d1b0a48361a8430cb16abd0b1036f311b5175f212d364",
+      "sourceBytes": 1834687,
+      "bytes": 726586,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/seasons-v2/cool-winter-2-peace.png",
+      "file": "assets/motion/seasons-v2/cool-winter-2-peace.webp",
+      "sourceHash": "85d728d0c0613584ecbf6c1f5905405f65c7ec1ccf2078ae60c0ebae1b08e4d7",
+      "sourceBytes": 1808778,
+      "bytes": 706196,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/seasons-v2/literary-spring-2-glasses.png",
+      "file": "assets/motion/seasons-v2/literary-spring-2-glasses.webp",
+      "sourceHash": "058f673911a9c84bc4352eac843a30a36ce8e8c2257fcdd656c735851486e23c",
+      "sourceBytes": 1816593,
+      "bytes": 740492,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/seasons-v2/literary-spring-2-think.png",
+      "file": "assets/motion/seasons-v2/literary-spring-2-think.webp",
+      "sourceHash": "32f8e80e0ef4bd087199c5db193e632e7835d829660581c1348c75ddff40a311",
+      "sourceBytes": 1787900,
+      "bytes": 700400,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/seasons-v2/literary-spring-2-wave.png",
+      "file": "assets/motion/seasons-v2/literary-spring-2-wave.webp",
+      "sourceHash": "a7010bbac651112c4619ccbbbb75a6e5ac55fcb8e76248b388e0ab4ff2ab1573",
+      "sourceBytes": 1835907,
+      "bytes": 744352,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/seasons-v2/literary-summer-2-glasses.png",
+      "file": "assets/motion/seasons-v2/literary-summer-2-glasses.webp",
+      "sourceHash": "bcd2ce9fa09d50553aaf843afc98e1d236afc561b39d6fab83fcd2f77d286033",
+      "sourceBytes": 1885209,
+      "bytes": 761012,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/seasons-v2/literary-summer-2-think.png",
+      "file": "assets/motion/seasons-v2/literary-summer-2-think.webp",
+      "sourceHash": "ede2a13f24dbbdd1ff64573afcbe7768be24dc4c139edf58d218b15b9eb21c94",
+      "sourceBytes": 1865234,
+      "bytes": 752776,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/seasons-v2/literary-summer-2-wave.png",
+      "file": "assets/motion/seasons-v2/literary-summer-2-wave.webp",
+      "sourceHash": "958f20b4f5524a8f8419d70ab732cd17fa2a8c676d478e942e4eadb3f72d6327",
+      "sourceBytes": 1895864,
+      "bytes": 774178,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/seasons-v2/literary-winter-2-glasses.png",
+      "file": "assets/motion/seasons-v2/literary-winter-2-glasses.webp",
+      "sourceHash": "a6c9aabf6d544bea28fe3a910220bf3ee9c45c3328ccff21c21242de2a99fd06",
+      "sourceBytes": 1953604,
+      "bytes": 809582,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/seasons-v2/literary-winter-2-think.png",
+      "file": "assets/motion/seasons-v2/literary-winter-2-think.webp",
+      "sourceHash": "e096c495b3a1655bb49fb83e08465b5e64e62381a0a65735db8adde22769081f",
+      "sourceBytes": 1938344,
+      "bytes": 795046,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/seasons-v2/literary-winter-2-wave.png",
+      "file": "assets/motion/seasons-v2/literary-winter-2-wave.webp",
+      "sourceHash": "0bb3e8b3e55a9734a5ef28263f735ceb46016766f86f7425eaeed99cd7b4bd45",
+      "sourceBytes": 1992468,
+      "bytes": 837920,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/seasons-v2/sweet-autumn-2-heart.png",
+      "file": "assets/motion/seasons-v2/sweet-autumn-2-heart.webp",
+      "sourceHash": "771f3d0c372a51695acfa38ce4279858c32d5850868478ab487f8027fad069cf",
+      "sourceBytes": 2136921,
+      "bytes": 922802,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/seasons-v2/sweet-autumn-2-puff.png",
+      "file": "assets/motion/seasons-v2/sweet-autumn-2-puff.webp",
+      "sourceHash": "755e14e6bd9ba667dc7598ca46292ae86987a7900255bfe0b4e26d9d7f361e89",
+      "sourceBytes": 2177567,
+      "bytes": 956188,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/seasons-v2/sweet-summer-2-heart.png",
+      "file": "assets/motion/seasons-v2/sweet-summer-2-heart.webp",
+      "sourceHash": "200b8bd27dcbf0dc10693d94f7254b8607e39bc3732043cd83637bf6d04b2e82",
+      "sourceBytes": 2034178,
+      "bytes": 888500,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/seasons-v2/sweet-summer-2-puff.png",
+      "file": "assets/motion/seasons-v2/sweet-summer-2-puff.webp",
+      "sourceHash": "40a69f7c6e9ae66d0cf0ac096eee29ccd3c091de3bee4f131f5864d1906128f7",
+      "sourceBytes": 1993199,
+      "bytes": 849960,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/seasons-v2/sweet-winter-2-heart.png",
+      "file": "assets/motion/seasons-v2/sweet-winter-2-heart.webp",
+      "sourceHash": "b97d1ffcfe0821f0164f070e7b5b626fa2d2c182964be8dcda45d7af1c0d4667",
+      "sourceBytes": 2109856,
+      "bytes": 890694,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/seasons-v2/sweet-winter-2-puff.png",
+      "file": "assets/motion/seasons-v2/sweet-winter-2-puff.webp",
+      "sourceHash": "6ba4bfcd04ae1af6d059234aabcdd6587173503d628decfc4d9ece7dc03815ff",
+      "sourceBytes": 2107179,
+      "bytes": 884620,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/sweet-actions-v2/autumn-heart.png",
+      "file": "assets/motion/sweet-actions-v2/autumn-heart.webp",
+      "sourceHash": "94c53c23782d3d2aeb51b6be1c95c1840c74ce6633ef174acaf8b8ac411e4b85",
+      "sourceBytes": 2151545,
+      "bytes": 916186,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/sweet-actions-v2/autumn-puff.png",
+      "file": "assets/motion/sweet-actions-v2/autumn-puff.webp",
+      "sourceHash": "798ff9bc8e9d1c0cb878514df096f80c1b33f40878d4422e3773f15b7ff8bc3e",
+      "sourceBytes": 2099574,
+      "bytes": 893016,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/sweet-actions-v2/blue-heart.png",
+      "file": "assets/motion/sweet-actions-v2/blue-heart.webp",
+      "sourceHash": "48cfd19d16da6a35204a82e986cde774239db6b504e3a745cb4d467dc872d5fb",
+      "sourceBytes": 1958729,
+      "bytes": 846194,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/sweet-actions-v2/blue-puff.png",
+      "file": "assets/motion/sweet-actions-v2/blue-puff.webp",
+      "sourceHash": "1bf21e196339a87042ced90f183f7714fb2f3cced6607e8dbb2c8295a48752ca",
+      "sourceBytes": 1963012,
+      "bytes": 852314,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/sweet-actions-v2/polo-heart.png",
+      "file": "assets/motion/sweet-actions-v2/polo-heart.webp",
+      "sourceHash": "380dfa2eaf2c000a9eb82eccc60eb776e30fd0a08be1480329c95cd0e2ee804f",
+      "sourceBytes": 1919450,
+      "bytes": 787778,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/sweet-actions-v2/polo-puff.png",
+      "file": "assets/motion/sweet-actions-v2/polo-puff.webp",
+      "sourceHash": "46886876500983523692eba054060c5db89b05d92a2ff98ac643c13b64974ecc",
+      "sourceBytes": 1947910,
+      "bytes": 808228,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/sweet-autumn-v1/blink.png",
+      "file": "assets/motion/sweet-autumn-v1/blink.webp",
+      "sourceHash": "a2ca49daf9ce50d08c70425a9cf00a3377daed529289ae02e42c6204e92c4d52",
+      "sourceBytes": 2099321,
+      "bytes": 885454,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/sweet-autumn-v1/puff.png",
+      "file": "assets/motion/sweet-autumn-v1/puff.webp",
+      "sourceHash": "798ff9bc8e9d1c0cb878514df096f80c1b33f40878d4422e3773f15b7ff8bc3e",
+      "sourceBytes": 2099574,
+      "bytes": 893016,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/sweet-autumn-v1/smile.png",
+      "file": "assets/motion/sweet-autumn-v1/smile.webp",
+      "sourceHash": "0c9661ca03d516fb987e1a823589b2a23d351c8fd9deeeebb7a858aa072e0dbb",
+      "sourceBytes": 2090341,
+      "bytes": 890188,
+      "kind": "lossless-motion"
+    },
+    {
+      "source": "assets/motion/sweet-autumn-v1/wave.png",
+      "file": "assets/motion/sweet-autumn-v1/wave.webp",
+      "sourceHash": "42857cbcdf76aef7643faff26caef20b80a5c61fec4eb18c68ae1daa0b09fdb3",
+      "sourceBytes": 2120787,
+      "bytes": 907780,
+      "kind": "lossless-motion"
+    }
+  ]
+}

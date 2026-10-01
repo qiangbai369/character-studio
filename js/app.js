@@ -50,7 +50,7 @@
     const button = document.createElement('button');
     button.type = 'button'; button.className = 'character-choice'; button.dataset.character = character.id;
     button.setAttribute('aria-label', '切换角色：' + character.label); button.setAttribute('aria-pressed', 'false'); button.disabled = true;
-    const thumbnail = document.createElement('img'); thumbnail.src = character.file; thumbnail.alt = '';
+    const thumbnail = document.createElement('img'); thumbnail.src = W.thumbnailFor(character.base); thumbnail.decoding = 'async'; thumbnail.fetchPriority = 'low'; thumbnail.width = 192; thumbnail.height = 288; thumbnail.alt = '';
     const label = document.createElement('span'); label.textContent = character.label;
     button.append(framedThumbnail(thumbnail, character.base, 'character-thumbnail'), label);
     button.addEventListener('click', () => changeOutfit(selectedLook(character.id).id));
@@ -68,7 +68,7 @@
   function framedThumbnail(image, outfitId, className) {
     const frame = W.frameForOutfit(outfitId), holder = document.createElement('span');
     holder.className = className; holder.setAttribute('aria-hidden', 'true');
-    // Catalogue PNGs share a 1024 × 1536 canvas; trim their transparent margins.
+    // Thumbnails retain the original 2:3 canvas; use the approved source framing.
     holder.style.aspectRatio = String(frame.width * 1024 / (frame.height * 1536));
     image.style.width = 100 / frame.width + '%'; image.style.height = 100 / frame.height + '%';
     image.style.left = -100 * frame.x / frame.width + '%'; image.style.top = -100 * frame.y / frame.height + '%';
@@ -86,7 +86,7 @@
     button.type = 'button'; button.className = 'outfit-card'; button.dataset.outfit = look.id;
     button.setAttribute('aria-label', '换装：' + look.label); button.setAttribute('aria-pressed', 'false');
     button.disabled = true;
-    const thumbnail = document.createElement('img'); thumbnail.src = look.file; thumbnail.alt = ''; thumbnail.width = 44; thumbnail.height = 54;
+    const thumbnail = document.createElement('img'); thumbnail.src = W.thumbnailFor(look.id); thumbnail.decoding = 'async'; thumbnail.fetchPriority = 'low'; thumbnail.alt = ''; thumbnail.width = 44; thumbnail.height = 54;
     const label = document.createElement('span'); label.textContent = look.label;
     button.append(framedThumbnail(thumbnail, look.id, 'outfit-thumbnail'), label); button.addEventListener('click', () => changeOutfit(look.id));
     $('outfitList').append(button);
@@ -119,6 +119,17 @@
     $('outfitStatus').textContent = busy ? '正在准备穿搭…' : look ? look.label + ' · ' + look.name : '选择角色及穿搭';
   }
 
+  function trimOutfitCache(protectedId) {
+    // Keep six decoded originals, plus any in-flight selections. Visible/export
+    // sources remain pinned until the next successful character change.
+    for (const [id] of outfitCache) {
+      if (outfitImages.size <= 6) break;
+      const cached = outfitImages.get(id);
+      if (!cached || cached === image || id === pendingOutfitId || id === protectedId) continue;
+      outfitCache.get(id).then(data => URL.revokeObjectURL(data.url), () => {});
+      outfitCache.delete(id); outfitImages.delete(id);
+    }
+  }
   async function loadOutfit(id) {
     if (!outfitCache.has(id)) {
       const promise = (async () => {
@@ -127,12 +138,15 @@
         const blob = await response.blob();
         const decoded = await decode(blob, W.frameForOutfit(id));
         outfitImages.set(id, decoded.image);
+        trimOutfitCache(id);
         return { ...decoded, blob };
       })();
       outfitCache.set(id, promise);
       promise.catch(() => { outfitCache.delete(id); });
     }
-    return outfitCache.get(id);
+    const promise = outfitCache.get(id);
+    outfitCache.delete(id); outfitCache.set(id, promise);
+    return promise;
   }
 
   async function changeOutfit(id, season = activeSeason) {
@@ -154,6 +168,7 @@
       if (sequence !== uploadSequence) return;
       activeSeason=nextSeason;
       setCharacter(loaded, loaded.blob, W.characterForOutfit(id).name, 'outfit:' + id, settings, id);
+      trimOutfitCache(id);
       if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         const thumbnail=$('outfitList').querySelector('[data-outfit="'+id+'"] img');
         thumbnail?.animate([{ opacity: .65 }, { opacity: 1 }], { duration: 180, easing: 'ease-out' });
@@ -165,17 +180,28 @@
       if (outfitRequest === sequence) { outfitRequest = 0; pendingOutfitId=null; syncWardrobe(); }
     }
   }
-  let warmRequest=0;
+  let warmRequest=0, warmHandle;
   function warmWardrobe(characterId){
-    const token=++warmRequest;
+    const token=++warmRequest, season=activeSeason, outfit=activeOutfitId;
+    if(warmHandle!==undefined){
+      if(window.cancelIdleCallback)window.cancelIdleCallback(warmHandle);else clearTimeout(warmHandle);
+    }
+    const current=()=>token===warmRequest&&characterId===activeCharacterId&&season===activeSeason&&outfit===activeOutfitId;
     const warm=async()=>{
-      const season=activeSeason;
+      if(!current()||document.hidden)return;
+      // Finish the visible character before warming another large original.
+      try{await Promise.all([StudioEffects.loadCharacter(characterId),StudioEffects.loadLook(outfit)]);}catch{return;}
+      if(!current()||document.hidden)return;
+      const connection=navigator.connection;
+      if(connection?.saveData||['slow-2g','2g'].includes(connection?.effectiveType))return;
       for(const look of W.forSeason(characterId,season)){
-        if(token!==warmRequest||characterId!==activeCharacterId||season!==activeSeason)return;
-        try{await Promise.all([loadOutfit(look.id),StudioEffects.loadLook(look.id)]);}catch{/* A foreground choice retries failed loads. */}
+        if(!current()||document.hidden)return;
+        if(look.id===outfit)continue;
+        try{await loadOutfit(look.id);}catch{/* Foreground choices retry failures. */}
+        // Other looks' gestures stay on demand instead of competing with the main scene.
       }
     };
-    if(window.requestIdleCallback)window.requestIdleCallback(warm,{timeout:700});else setTimeout(warm,200);
+    warmHandle=window.requestIdleCallback?window.requestIdleCallback(warm,{timeout:1200}):setTimeout(warm,600);
   }
   $('outfitButton').addEventListener('click', async () => {
     if(!ready||!activeCharacterId)return;
