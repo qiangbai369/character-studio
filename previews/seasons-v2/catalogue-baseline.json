@@ -1,0 +1,152 @@
+[
+  {
+    "id": "autumn",
+    "file": "assets/outfits/sweet-autumn-v2.png",
+    "frame": {
+      "x": 0.18359375,
+      "y": 0.018229166666666668,
+      "width": 0.642578125,
+      "height": 0.9583333333333334
+    }
+  },
+  {
+    "id": "blue",
+    "file": "assets/outfits/sweet-blue-v2.png",
+    "frame": {
+      "x": 0.18359375,
+      "y": 0.015625,
+      "width": 0.642578125,
+      "height": 0.9609375
+    }
+  },
+  {
+    "id": "polo",
+    "file": "assets/outfits/sweet-polo-v2.png",
+    "frame": {
+      "x": 0.18359375,
+      "y": 0.022786458333333332,
+      "width": 0.642578125,
+      "height": 0.9700520833333334
+    }
+  },
+  {
+    "id": "cool-original",
+    "file": "assets/cool-girl-reference.png",
+    "frame": {
+      "x": 0.22265625,
+      "y": 0.049479166666666664,
+      "width": 0.57421875,
+      "height": 0.9114583333333334
+    }
+  },
+  {
+    "id": "cool-street",
+    "file": "assets/outfits/cool-street-v2.png",
+    "frame": {
+      "x": 0.22265625,
+      "y": 0.049479166666666664,
+      "width": 0.57421875,
+      "height": 0.9114583333333334
+    }
+  },
+  {
+    "id": "cool-olive",
+    "file": "assets/outfits/cool-olive-v2.png",
+    "frame": {
+      "x": 0.20703125,
+      "y": 0.0026041666666666665,
+      "width": 0.60546875,
+      "height": 0.9583333333333334
+    }
+  },
+  {
+    "id": "literary-bookshop",
+    "file": "assets/literary-girl-reference.png",
+    "frame": {
+      "x": 0.17578125,
+      "y": 0.008463541666666666,
+      "width": 0.6357421875,
+      "height": 0.986328125
+    }
+  },
+  {
+    "id": "literary-campus",
+    "file": "assets/outfits/literary-campus-v1.png",
+    "frame": {
+      "x": 0.17578125,
+      "y": 0.008463541666666666,
+      "width": 0.6357421875,
+      "height": 0.986328125
+    }
+  },
+  {
+    "id": "literary-weekend",
+    "file": "assets/outfits/literary-weekend-v1.png",
+    "frame": {
+      "x": 0.17578125,
+      "y": 0.008463541666666666,
+      "width": 0.6357421875,
+      "height": 0.986328125
+    }
+  },
+  {
+    "id": "sweet-summer",
+    "file": "assets/outfits/sweet-summer-v1.png",
+    "frame": {
+      "x": 0.18359375,
+      "y": 0.018229166666666668,
+      "width": 0.642578125,
+      "height": 0.9661458333333334
+    }
+  },
+  {
+    "id": "sweet-winter",
+    "file": "assets/outfits/sweet-winter-v1.png",
+    "frame": {
+      "x": 0.18359375,
+      "y": 0.018229166666666668,
+      "width": 0.642578125,
+      "height": 0.9661458333333334
+    }
+  },
+  {
+    "id": "cool-summer",
+    "file": "assets/outfits/cool-summer-v1.png",
+    "frame": {
+      "x": 0.22265625,
+      "y": 0.045572916666666664,
+      "width": 0.57421875,
+      "height": 0.9212239583333334
+    }
+  },
+  {
+    "id": "cool-winter",
+    "file": "assets/outfits/cool-winter-v1.png",
+    "frame": {
+      "x": 0.21484375,
+      "y": 0.046875,
+      "width": 0.58984375,
+      "height": 0.927734375
+    }
+  },
+  {
+    "id": "literary-summer",
+    "file": "assets/outfits/literary-summer-v1.png",
+    "frame": {
+      "x": 0.1806640625,
+      "y": 0.015625,
+      "width": 0.6640625,
+      "height": 0.9791666666666666
+    }
+  },
+  {
+    "id": "literary-winter",
+    "file": "assets/outfits/literary-winter-v1.png",
+    "frame": {
+      "x": 0.17578125,
+      "y": 0.015625,
+      "width": 0.6357421875,
+      "height": 0.9791666666666666
+    }
+  }
+]

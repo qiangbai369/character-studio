@@ -1,0 +1,141 @@
+{
+  "status": "user-approved-and-integrated",
+  "tool": "built-in image_gen",
+  "plan": {
+    "perSeason": 2,
+    "perCharacter": 8,
+    "total": 24,
+    "existing": 15,
+    "new": 9
+  },
+  "allocations": {
+    "sweet": {
+      "spring": [
+        "blue",
+        "polo"
+      ],
+      "summer": [
+        "sweet-summer",
+        "sweet-summer-2"
+      ],
+      "autumn": [
+        "autumn",
+        "sweet-autumn-2"
+      ],
+      "winter": [
+        "sweet-winter",
+        "sweet-winter-2"
+      ]
+    },
+    "cool": {
+      "spring": [
+        "cool-olive",
+        "cool-spring-2"
+      ],
+      "summer": [
+        "cool-summer",
+        "cool-summer-2"
+      ],
+      "autumn": [
+        "cool-original",
+        "cool-street"
+      ],
+      "winter": [
+        "cool-winter",
+        "cool-winter-2"
+      ]
+    },
+    "literary": {
+      "spring": [
+        "literary-campus",
+        "literary-spring-2"
+      ],
+      "summer": [
+        "literary-summer",
+        "literary-summer-2"
+      ],
+      "autumn": [
+        "literary-bookshop",
+        "literary-weekend"
+      ],
+      "winter": [
+        "literary-winter",
+        "literary-winter-2"
+      ]
+    }
+  },
+  "items": [
+    {
+      "id": "sweet-summer-2",
+      "character": "sweet",
+      "season": "summer",
+      "name": "蜜桃晴日",
+      "detail": "蜜桃连衣裙 · 编织芭蕾鞋",
+      "clothes": "A light peach short-sleeve cotton sundress with a fitted modest waist and gently flared calf-length skirt, tiny tonal floral embroidery near hem, delicate ivory collar edging, breathable lightweight cloth. Cream woven closed-toe ballet flats with a slim peach ankle strap, visibly different from sandals and sneakers. Small ivory canvas handbag held in the SAME left hand pose; right hand rests naturally in the dress side pocket."
+    },
+    {
+      "id": "sweet-autumn-2",
+      "character": "sweet",
+      "season": "autumn",
+      "name": "莓色针织",
+      "detail": "莓粉开衫 · 格纹裙 · 玛丽珍鞋",
+      "clothes": "A dusty berry-pink medium-weight knitted button cardigan over an ivory blouse with a small rounded collar, a cocoa/cream small-check calf-length pleated skirt, warm ivory ribbed opaque tights, dark burgundy flat Mary Jane shoes with two delicate straps and modest soles. Small chocolate leather handbag in the SAME left hand position, right hand in cardigan side pocket. No scarf, no long coat, clear autumn knit layering."
+    },
+    {
+      "id": "sweet-winter-2",
+      "character": "sweet",
+      "season": "winter",
+      "name": "奶油冬信",
+      "detail": "牛角扣大衣 · 针织裙 · 系带暖靴",
+      "clothes": "A warm cream wool duffle coat with three small brown toggle fastenings, thick dusty-rose knitted turtleneck underneath and a heather beige warm knitted calf-length dress, opaque cocoa thermal tights covering legs. Deep brown lace-up insulated ankle boots with subtle shearling edging and compact rugged soles, distinctly not snow boots. Small tan wool-and-leather handbag in SAME left hand position, right hand in coat pocket. Wintry warmth, no bare skin below neckline."
+    },
+    {
+      "id": "cool-spring-2",
+      "character": "cool",
+      "season": "spring",
+      "name": "牛仔轻行",
+      "detail": "牛仔衬衫外套 · 直筒裤 · 滑板鞋",
+      "clothes": "An airy washed muted blue denim overshirt worn open over a white short-sleeve crew-neck tee with a tiny abstract charcoal emblem, charcoal straight-leg ankle pants, off-white socks, black and white low-top flat skate sneakers with thin rubber soles. Both hands in trouser pockets matching original body stance. Keep original decorated BROWN baseball cap exactly; no bag. Light spring casual layering, clearly unlike green jacket and bulky autumn hoodies."
+    },
+    {
+      "id": "cool-summer-2",
+      "character": "cool",
+      "season": "summer",
+      "name": "球场午后",
+      "detail": "撞色短袖 · 百慕大短裤 · 运动凉鞋",
+      "clothes": "An off-white and muted cocoa raglan short-sleeve baseball tee, dark washed denim loose Bermuda shorts ending above knee, dark charcoal sporty closed-toe woven fisherman sandals with thick adjustable straps and a grounded rubber sole, bare ankles. Both hands in shorts pockets in the SAME stance. Keep original decorated BROWN baseball cap exactly. No heavy hoodie or long sleeves; airy sporty summer, tiny abstract graphic only, no writing."
+    },
+    {
+      "id": "cool-winter-2",
+      "character": "cool",
+      "season": "winter",
+      "name": "山野暖行",
+      "detail": "橄榄派克服 · 灯芯绒裤 · 保暖登山靴",
+      "clothes": "A thick muted olive insulated parka reaching upper thighs with a warm cream fleece collar and fleece-lined hood resting behind the neck (not covering head), cocoa ribbed turtleneck, charcoal full-length loose corduroy pants, tan and dark brown insulated lace-up hiking boots with compact lug soles. Hands in parka pockets in SAME stance. Original decorated brown baseball cap exactly unchanged. Clearly winter protection and visibly distinct from charcoal puffer/black boots."
+    },
+    {
+      "id": "literary-spring-2",
+      "character": "literary",
+      "season": "spring",
+      "name": "青苔书页",
+      "detail": "鼠尾草西装 · 百褶裙 · 芭蕾平底鞋",
+      "clothes": "A lightweight soft sage-green relaxed blazer over a plain ivory thin knit top, warm grey calf-length finely pleated skirt, light neutral short socks and taupe soft ballet flats with tiny neat bows and thin soles. Original cognac shoulder bag exactly, original hand on strap and opposite arm relaxed exactly. Spring tailoring, thin fabric, no thick scarf, no winter coat."
+    },
+    {
+      "id": "literary-summer-2",
+      "character": "literary",
+      "season": "summer",
+      "name": "蓝色夏笺",
+      "detail": "雾蓝亚麻裙 · 棕色编织凉鞋",
+      "clothes": "A powder-blue lightweight linen short-sleeve shirt dress with neat collar, modest ivory buttons and a narrow matching waist belt, gently flared calf-length skirt. Warm tan flat woven open-toe sandals with narrow ankle straps and slim soles, bare lower legs. Original cognac leather shoulder bag exactly, same hand on strap and other relaxed arm. Crisp breathable summer texture, no knitwear, no jacket."
+    },
+    {
+      "id": "literary-winter-2",
+      "character": "literary",
+      "season": "winter",
+      "name": "雾灰冬读",
+      "detail": "雾灰大衣 · 羊毛阔腿裤 · 切尔西靴",
+      "clothes": "A soft mid-grey thick wool double-breasted coat ending just above knees, burgundy knitted turtleneck and deep burgundy subtle scarf tucked inside collar, ivory full-length warm wool wide-leg trousers, dark brown low-heel insulated Chelsea ankle boots with black elastic side gussets. Original cognac shoulder bag and same hand on strap/other arm relaxed. No exposed ankles; distinguish grey coat/trousers/ankle boots from existing camel coat/skirt/tall boots."
+    }
+  ]
+}
