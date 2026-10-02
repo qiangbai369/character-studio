@@ -35,5 +35,5 @@ test('repeated connection failures show a usable reload control instead of keepi
   const reload=result.loading.children.find(n=>n.textContent==='重新加载');assert.ok(reload,'no recovery control was shown');reload.onclick();assert.equal(result.reloads(),1);
 });
 test('successful loading starts the app once after its dependencies without redundant retries',async()=>{
-  const result=await page();assert.equal(result.started,true);assert.equal(result.requests.length,8);assert.equal(result.requests.filter(src=>src==='js/app.js').length,1);
+  const result=await page();assert.equal(result.started,true);assert.equal(result.requests.length,9);assert.equal(result.requests.filter(src=>src==='js/app.js').length,1);
 });

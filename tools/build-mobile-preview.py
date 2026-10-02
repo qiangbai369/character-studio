@@ -1,11 +1,9 @@
-"""Build a separate review page; production index/styles remain untouched."""
+"""Keep the review route using the same approved responsive production UI."""
 from pathlib import Path
 root=Path(__file__).resolve().parents[1]
 html=(root/'index.html').read_text()
 html=html.replace('<meta charset="UTF-8">','<meta charset="UTF-8">\n  <base href="../../">')
 html=html.replace('<title>甜橙 · Character Studio</title>','<title>手机排布预览 · Character Studio</title>')
-html=html.replace('<link rel="stylesheet" href="styles.css">','<link rel="stylesheet" href="styles.css">\n  <link rel="stylesheet" href="previews/mobile/mobile.css">')
-html=html.replace('<script id="studioBootstrap">','<script src="previews/mobile/mobile.js"></script>\n  <script id="studioBootstrap">')
 html=html.replace('<a class="brand" href="./"','<a class="brand" href="previews/mobile/studio.html"')
 (root/'previews/mobile').mkdir(parents=True,exist_ok=True)
 (root/'previews/mobile/studio.html').write_text(html)

@@ -7,7 +7,7 @@
   <meta name="description" content="A local character studio. Shape, light and export your character in your browser.">
   <title>甜橙 · Character Studio</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=mobile-v1">
 </head>
 <body>
   <svg class="icon-definitions" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
@@ -27,7 +27,7 @@
   <header class="toolbar">
     <a class="brand" href="./" aria-label="角色摄影棚首页"><span class="brand-mark">n</span><span>Character Studio</span></a>
     <nav class="toolbar-actions" aria-label="Studio tools">
-      <button id="libraryButton" class="toolbar-button" type="button"><svg><use href="#i-library"/></svg><span>作品</span><span id="versionCount" class="count" hidden>0</span></button>
+      <button id="libraryButton" aria-label="作品" class="toolbar-button" type="button"><svg><use href="#i-library"/></svg><span>作品</span><span id="versionCount" class="count" hidden>0</span></button>
       <details class="toolbar-more"><summary>更多</summary><div class="more-menu">
         <button id="uploadButton" type="button">上传角色</button>
         <button id="downloadButton" type="button">人物 PNG</button>
@@ -65,7 +65,12 @@
 
     <aside class="settings" aria-label="Character controls">
       <div class="settings-title"><p>CHARACTER</p><h1 id="characterName">甜橙</h1><div id="characterPicker" class="character-picker" role="group" aria-label="Choose a character"></div><p id="personality" class="sr-only"></p></div>
-
+      <div id="mobileTabs" class="mobile-tabs" role="tablist" aria-label="摄影棚控制" hidden>
+        <button id="mobile-tab-outfits" type="button" role="tab" aria-controls="mobile-panel-outfits" aria-selected="true">穿搭</button>
+        <button id="mobile-tab-responses" type="button" role="tab" aria-controls="mobile-panel-responses" aria-selected="false" tabindex="-1">动作</button>
+        <button id="mobile-tab-atmosphere" type="button" role="tab" aria-controls="mobile-panel-atmosphere" aria-selected="false" tabindex="-1">氛围</button>
+      </div>
+      <div id="mobile-panel-outfits" class="mobile-panel">
       <section id="wardrobe" class="wardrobe" aria-label="OOTD outfits" aria-busy="false">
         <div id="seasonPicker" class="season-picker" role="group" aria-label="选择季节"></div>
         <div class="wardrobe-heading"><h2>OOTD</h2><span id="outfitCounter">—</span></div>
@@ -73,12 +78,15 @@
         <div id="outfitList" class="outfit-list" role="group" aria-label="Choose an outfit"></div>
         <p id="outfitStatus" class="outfit-status sr-only" role="status" aria-live="polite">秋日款 · Autumn layers</p>
       </section>
-
+      </div>
+      <div id="mobile-panel-responses" class="mobile-panel">
       <section id="responseSection" class="studio-section" aria-label="角色回应">
         <div class="section-heading"><h2>动作</h2><button id="idleButton" type="button" aria-pressed="true">待机开启</button></div>
         <div id="responseButtons" class="segmented" role="group" aria-label="选择人物回应"></div>
         <p id="responseStatus" class="section-note sr-only" role="status" aria-live="polite">待机 · 呼吸与眨眼</p>
       </section>
+      </div>
+      <div id="mobile-panel-atmosphere" class="mobile-panel">
       <section class="studio-section" aria-label="摄影场景">
         <div class="section-heading"><h2>场景</h2></div>
         <div id="sceneButtons" class="scene-buttons" role="group" aria-label="选择场景">
@@ -121,6 +129,7 @@
       <fieldset class="palette-control background-control"><legend>底色与 PNG 背景</legend><div id="backgroundPalette" class="palette"></div></fieldset>
       <button id="resetButton" class="reset-button" type="button"><svg><use href="#i-reset"/></svg>恢复原样</button>
       </details>
+      </div>
     </aside>
   </main>
   <div id="cameraControls" class="camera-controls" hidden>
@@ -159,7 +168,7 @@
   <script id="studioBootstrap">
     (async function () {
       // Load dependencies in order so a dropped request cannot start an incomplete app.
-      const files=['js/model.js','js/renderer.js','js/storage.js','js/wardrobe.js','js/studio-model.js','js/studio-effects.js','js/studio-controller.js','js/app.js'];
+      const files=['js/mobile-layout.js','js/model.js','js/renderer.js','js/storage.js','js/wardrobe.js','js/studio-model.js','js/studio-effects.js','js/studio-controller.js','js/app.js'];
       function load(src) {
         return new Promise((resolve,reject) => {
           const script=document.createElement('script');let settled=false;

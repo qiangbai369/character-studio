@@ -193,8 +193,9 @@
   "assets/thumbnails/sweet-summer.webp": "3478f1311a15d5f10ae19876237cb9b42205a15d32efdea904af98c8677b8dc2",
   "assets/thumbnails/sweet-winter-2.webp": "0ceb701750d7484fa7e0471c203891fc3c604b9470c1bd573d93bb9b5ded8aa6",
   "assets/thumbnails/sweet-winter.webp": "69e8d666ca54ea4c7f96674fbdae0995ed7681598042527bdba6928082257b48",
-  "index.html": "4e517c454ff178453af8a5f861926a52f8fae7764c4ace329396d390c64e1f58",
+  "index.html": "f45b35ac058dd0330a416f265791192b71a6dc1c62d7d610544d12dc89fe58c0",
   "js/app.js": "1b831d696154f0bc01aa7b81937ed51e9afa9c5e11740790daf60f6278c9684d",
+  "js/mobile-layout.js": "3b413035b2fdc9757401530b6acaf0f8b7d89b87263ab0895a156bfdc5d722c4",
   "js/model.js": "e96781f5822efd2e2cb42879bd6bf06cf9c66bd868a1757f2d02c20fd23653a7",
   "js/renderer.js": "f04c8d10327f157a403fff72c4dd03aaccbbe13b5d3d7f20a6ae7331a783d640",
   "js/storage.js": "c0be948890f573fc8a8e363cc8cc65f9d54edd4e4c3d296214d82f87db1db2a7",
@@ -205,6 +206,6 @@
   "previews/mobile/index.html": "9d317545c945a00ac13f5e77524ffc0a1c2fe1ac8fc7f11e8fe0b424748eecf0",
   "previews/mobile/mobile.css": "bea671159908a9f0c9338eefa8b9e0081466a6f1b765d861008bb6dc8358b70f",
   "previews/mobile/mobile.js": "49b6c56c976f77c7d170c2823e10cdfdbb3f7aa8c5538d380e5bae62fb910b79",
-  "previews/mobile/studio.html": "920f36ff6acc3336608933f346351cbd2397c18f5570608ac28505c287727873",
-  "styles.css": "33a1c714085d341e3da391d25e0b6a8bee3607eab1ee7ae2c86d3e093f2532d2"
+  "previews/mobile/studio.html": "d6904c8d42253c4584432f2ae1ace693d0183798ee9b73358320911f95e0345f",
+  "styles.css": "edbbd81023a4be68c316b0f8b6f550b1933f42c917f733d932d8bc0d08a3d169"
 }

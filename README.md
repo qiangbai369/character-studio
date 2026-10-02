@@ -3,13 +3,13 @@
 甜橙、阿飒、知秋的2D角色摄影棚。每人8套穿搭，春夏秋冬各2套，共24套；一键OOTD、人物动作、灯光、杂志/拍立得场景、拍照和本地作品收藏。
 
 - 在线体验：https://qiangbai369.github.io/character-studio/
-- 当前版本：四季衣柜 v8 · 加载优化
+- 当前版本：四季衣柜 v8 · 加载优化与手机适配
 - 三位角色和衣服沿用已确认的原始PNG；小卡片使用缩略图，动作展示使用同画幅无损WebP。
 - 独立项目说明：[PROJECT.md](PROJECT.md)
 - 优化细则（1、2已确认）：[docs/optimization-roadmap.md](docs/optimization-roadmap.md)
 - 已确认上线基线：Git标签 `v8.0.0`；原始版本可随时回退。
 - 本轮验证：[docs/performance-mobile-review.md](docs/performance-mobile-review.md)
-- 待确认手机排布：[previews/mobile/](previews/mobile/)，与正式首页排布独立。
+- 手机排布已确认并接入正式首页；[previews/mobile/](previews/mobile/)保留手机画幅演示入口，与首页共享同一套响应式界面。
 
 ## 本地运行
 
@@ -35,4 +35,4 @@ GitHub Pages使用 `main` 分支根目录；`.nojekyll` 保持静态文件原样
 
 性能测量使用 `python3 tools/performance_probe.py`；先把 `v8.0.0` 的 index、styles 和 js 文件放入被忽略的 `output/performance/baseline/`，assets链接到原始素材。普通和慢网均用同一个浏览器，`normal/before/`、`normal/after/`、`slow/before/`、`slow/after/`分别隔离缓存；相同路径重复访问测暖缓存。
 
-手机预览以 `python3 tools/build-mobile-preview.py` 从正式HTML更新，但不改变正式HTML和CSS。
+手机画幅演示以 `python3 tools/build-mobile-preview.py` 从正式HTML更新，复用正式CSS和交互脚本。修改运行文件后执行 `node tools/update-runtime-manifest.cjs` 更新校验清单。
